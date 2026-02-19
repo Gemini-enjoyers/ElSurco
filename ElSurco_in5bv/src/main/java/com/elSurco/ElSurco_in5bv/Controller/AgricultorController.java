@@ -40,8 +40,9 @@ public class AgricultorController {
     }
 
     @DeleteMapping("/{id}")
-    public List<Agricultor> lista(){
-        return agricultorService.listar();
+    public Agricultor eliminar(@PathVariable Integer id) {
+        agricultorService.eliminar(id);
+        return null;
     }
 
 }
