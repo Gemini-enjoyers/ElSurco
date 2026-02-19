@@ -8,6 +8,7 @@ public class ElSurcoIn5bvApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ElSurcoIn5bvApplication.class, args);
+        System.out.println("funcionando");
 	}
 
 }

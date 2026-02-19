@@ -2,9 +2,11 @@ package com.elSurco.ElSurco_in5bv.Service;
 
 import com.elSurco.ElSurco_in5bv.Entity.Agricultor;
 import com.elSurco.ElSurco_in5bv.Repository.AgricultorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AgricultorServiceImpl implements AgricultorService{
     private final AgricultorRepository agricultorRepository;
 
