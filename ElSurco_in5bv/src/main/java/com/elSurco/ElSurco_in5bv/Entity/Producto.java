@@ -28,7 +28,6 @@ public class Producto {
     @Column(name = "fechaCosechaProducto", nullable = false)
     private LocalDate fechaCosechaProducto;
 
-    // --- RELACIONES ---
 
     @ManyToOne
     @JoinColumn(name = "idAgricultor", nullable = false)

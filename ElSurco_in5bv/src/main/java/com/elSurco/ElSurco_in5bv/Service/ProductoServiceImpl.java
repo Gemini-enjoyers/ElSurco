@@ -43,7 +43,6 @@ public class ProductoServiceImpl implements ProductoService {
             productoExistente.setStockProducto(producto.getStockProducto());
             productoExistente.setFechaCosechaProducto(producto.getFechaCosechaProducto());
 
-            // Actualizamos también las relaciones (si cambian de agricultor o categoría)
             productoExistente.setAgricultor(producto.getAgricultor());
             productoExistente.setCategoria(producto.getCategoria());
 
