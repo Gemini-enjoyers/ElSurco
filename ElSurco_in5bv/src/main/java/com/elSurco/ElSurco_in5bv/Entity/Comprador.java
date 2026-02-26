@@ -7,14 +7,14 @@ public class Comprador {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(name = "idComprador")
     private Integer idComprador;
-    @Column (name = "nombres")
-    private String nombres;
-    @Column (name = "apellidos")
-    private String apellidos;
-    @Column ( name = "telefono")
-    private String telefono;
-    @Column (name = "direccioEntrega")
-    private String direccionEntrega;
+    @Column (name = "nombreComprador")
+    private String nombreComprador;
+    @Column (name = "apellidoComprador")
+    private String apellidoComprador;
+    @Column ( name = "telefonoComprador")
+    private Long telefonoComprador;
+    @Column (name = "direccionComprador")
+    private String direccionComprador;
 
     public Integer getIdComprador() {
         return idComprador;
@@ -25,34 +25,34 @@ public class Comprador {
     }
 
     public String getNombres() {
-        return nombres;
+        return nombreComprador;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombres(String nombreComprador) {
+        this.nombreComprador = nombreComprador;
     }
 
     public String getApellidos() {
-        return apellidos;
+        return apellidoComprador;
     }
 
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        this.apellidoComprador = apellidoComprador;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public Long getTelefono() {
+        return telefonoComprador;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(Long telefono) {
+        this.telefonoComprador = telefonoComprador;
     }
 
     public String getDireccionEntrega() {
-        return direccionEntrega;
+        return direccionComprador;
     }
 
     public void setDireccionEntrega(String direccionEntrega) {
-        this.direccionEntrega = direccionEntrega;
+        this.direccionComprador = direccionComprador;
     }
 }
