@@ -71,7 +71,7 @@ public class Agricultor {
     }
 
     public void setTelefono(Long telefono) {
-        this.telefonoAgricultor = telefono;
+           this.telefonoAgricultor = telefono;
     }
 
     public String getComunidadAldea() {
