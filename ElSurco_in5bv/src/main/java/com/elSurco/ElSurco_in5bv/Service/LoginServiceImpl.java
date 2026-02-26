@@ -2,39 +2,58 @@ package com.elSurco.ElSurco_in5bv.Service;
 
 import com.elSurco.ElSurco_in5bv.Entity.Login;
 import com.elSurco.ElSurco_in5bv.Repository.LoginRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    private LoginRepository loginRepository;
+    private final LoginRepository loginRepository;
+
+    public LoginServiceImpl(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
+    }
 
     @Override
-    public List<Login> findAll() {
+    public List<Login> listar() {
         return loginRepository.findAll();
     }
 
     @Override
-    public Login findById(Integer id) {
-        return loginRepository.findById(id).orElse(null);
+    public Login obtenerPorId(Integer id) {
+        return loginRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario Login con ID Erróneo"));
     }
 
     @Override
-    public Login save(Login login) {
+    public Login agregar(Login login) {
+        login.setIdLogin(null);
         return loginRepository.save(login);
     }
 
     @Override
-    public void delete(Integer id) {
+    public Login actualizar(Integer id, Login login) {
+        Login loginExistente = loginRepository.findById(id).orElse(null);
+
+        if (loginExistente != null) {
+            loginExistente.setEmailLogin(login.getEmailLogin());
+            loginExistente.setPasswordLogin(login.getPasswordLogin());
+            loginExistente.setRolUsuario(login.getRolUsuario());
+
+            return loginRepository.save(loginExistente);
+        }
+        return null;
+    }
+
+    @Override
+    public void eliminar(Integer id) {
         loginRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Login> findByEmailLogin(String email) {
+    public Optional<Login> obtenerPorEmail(String email) {
         return loginRepository.findByEmailLogin(email);
     }
 }

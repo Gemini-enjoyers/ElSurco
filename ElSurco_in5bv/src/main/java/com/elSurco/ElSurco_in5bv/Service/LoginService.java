@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LoginService {
-    List<Login> findAll();
-    Login findById(Integer id);
-    Login save(Login login);
-    void delete(Integer id);
-    Optional<Login> findByEmailLogin(String email);
+    List<Login> listar();
+    Login obtenerPorId(Integer id);
+    Login agregar(Login login);
+    Login actualizar(Integer id, Login login);
+    void eliminar(Integer id);
+
+    Optional<Login> obtenerPorEmail(String email);
 }

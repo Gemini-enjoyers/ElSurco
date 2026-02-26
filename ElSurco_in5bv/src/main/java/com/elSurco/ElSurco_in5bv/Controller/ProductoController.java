@@ -2,41 +2,45 @@ package com.elSurco.ElSurco_in5bv.Controller;
 
 import com.elSurco.ElSurco_in5bv.Entity.Producto;
 import com.elSurco.ElSurco_in5bv.Service.ProductoService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/productos")
-@CrossOrigin(origins = "*")
-public class    ProductoController {
+@RequestMapping("/api/producto")
+public class ProductoController {
 
-    @Autowired
-    private ProductoService productoService;
+    private final ProductoService productoService;
 
-    @GetMapping
-    public ResponseEntity<List<Producto>> listarTodos() {
-        List<Producto> productos = productoService.findAll();
-        return new ResponseEntity<>(productos, HttpStatus.OK); // Devuelve un 200 OK
+    public ProductoController(ProductoService productoService) {
+        this.productoService = productoService;
     }
 
-    @PostMapping
-    public ResponseEntity<Producto> guardar(@Valid @RequestBody Producto producto) {
-        Producto nuevoProducto = productoService.save(producto);
-        return new ResponseEntity<>(nuevoProducto, HttpStatus.CREATED);
+    @GetMapping("/get")
+    public List<Producto> listar() {
+        return productoService.listar();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> buscarPorId(@PathVariable Integer id) {
-        Producto producto = productoService.findById(id);
-        if (producto != null) {
-            return new ResponseEntity<>(producto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Devuelve un 404 si no existe
-        }
+    public Producto obtener(@PathVariable Integer id) {
+        return productoService.obtenerPorId(id);
+    }
+
+    @PostMapping("/post")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto crear(@RequestBody Producto producto) {
+        return productoService.agregar(producto);
+    }
+
+    @PutMapping("/put/{Id}")
+    public Producto actualizar(@PathVariable("Id") Integer id, @RequestBody Producto producto) {
+        return productoService.actualizar(id, producto);
+    }
+
+    @DeleteMapping("/{id}")
+    public Producto eliminar(@PathVariable Integer id) {
+        productoService.eliminar(id);
+        return null;
     }
 }

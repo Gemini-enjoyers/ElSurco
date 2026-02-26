@@ -1,26 +1,44 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "Categoria")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCategoria")
     private Integer idCategoria;
 
-    @NotBlank(message = "El nombre de la categoría es obligatorio")
-    @Column(nullable = false, length = 50)
+    @Column(name = "nombreCategoria", nullable = false, length = 50)
     private String nombreCategoria;
 
-    @Column(length = 150)
+    @Column(name = "descripcionCategoria", length = 150)
     private String descripcionCategoria;
+
+
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
+    public String getDescripcionCategoria() {
+        return descripcionCategoria;
+    }
+
+    public void setDescripcionCategoria(String descripcionCategoria) {
+        this.descripcionCategoria = descripcionCategoria;
+    }
 }

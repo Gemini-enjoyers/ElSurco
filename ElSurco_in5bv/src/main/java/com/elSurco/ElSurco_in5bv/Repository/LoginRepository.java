@@ -8,6 +8,5 @@ import java.util.Optional;
 @Repository
 public interface LoginRepository extends JpaRepository<Login, Integer> {
 
-    // Método personalizado para buscar por correo
     Optional<Login> findByEmailLogin(String emailLogin);
 }
