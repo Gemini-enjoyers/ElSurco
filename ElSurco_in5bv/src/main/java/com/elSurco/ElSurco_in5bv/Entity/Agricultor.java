@@ -11,26 +11,26 @@ public class Agricultor {
     @Column(name = "idAgricultor")
     private int idAgricultor;
 
-    @Column(name = "nombres")
-    private String  nombres;
+    @Column(name = "nombreAgricultor")
+    private String  nombreAgricultor;
 
-    @Column(name = "apellidos")
-    private String apellidos ;
+    @Column(name = "apellidoAgricultor")
+    private String apellidoAgricultor;
 
-    @Column(name = "dpi")
-    private String dpi;
+    @Column(name = "dpiAgricultor")
+    private String dpiAgricultor;
 
-    @Column(name = "telefono")
-    private int telefono;
+    @Column(name = "telefonoAgricultor")
+    private Long telefonoAgricultor;
 
-    @Column(name = "comunidadAldea")
-    private String comunidadAldea;
+    @Column(name = "direccionAgricultor")
+    private String direccionAgricultor;
 
-    @Column(name = "coordenadasGps")
-    private String coordenadasGps;
+    @Column(name = "gpsAgricultor")
+    private String gpsAgricultor;
 
-    @Column(name = "historiaPerfil")
-    private String historiaPerfil;
+    @Column(name = "historiaAgricultor")
+    private String historiaAgricultor;
 
     @Column(name = "idLogin")
     private int idLogin;
@@ -44,59 +44,58 @@ public class Agricultor {
     }
 
     public String getNombres() {
-        return nombres;
+        return nombreAgricultor;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombres(String nombreAgricultor) {
+        this.nombreAgricultor = nombreAgricultor;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getApellidos() {return apellidoAgricultor;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setApellidos(String apellidoAgricultor) {
+        this.apellidoAgricultor = apellidoAgricultor;
     }
 
     public String getDpi() {
-        return dpi;
+        return dpiAgricultor;
     }
 
-    public void setDpi(String dpi) {
-        this.dpi = dpi;
+    public void setDpi(String dpiAgricultor) {
+        this.dpiAgricultor = dpiAgricultor;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public Long getTelefono() {
+        return telefonoAgricultor;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTelefono(Long telefonoAgricultor) {
+           this.telefonoAgricultor = telefonoAgricultor;
     }
 
     public String getComunidadAldea() {
-        return comunidadAldea;
+        return direccionAgricultor;
     }
 
-    public void setComunidadAldea(String comunidadAldea) {
-        this.comunidadAldea = comunidadAldea;
+    public void setComunidadAldea(String direccionAgricultor) {
+        this.direccionAgricultor = direccionAgricultor;
     }
 
     public String getCoordenadasGps() {
-        return coordenadasGps;
+        return gpsAgricultor;
     }
 
-    public void setCoordenadasGps(String coordenadasGps) {
-        this.coordenadasGps = coordenadasGps;
+    public void setCoordenadasGps(String gpsAgricultor) {
+        this.gpsAgricultor = gpsAgricultor;
     }
 
     public String getHistoriaPerfil() {
-        return historiaPerfil;
+        return historiaAgricultor;
     }
 
-    public void setHistoriaPerfil(String historiaPerfil) {
-        this.historiaPerfil = historiaPerfil;
+    public void setHistoriaPerfil(String historiaAgricultor) {
+        this.historiaAgricultor = historiaAgricultor;
     }
 
     public int getIdLogin() {
