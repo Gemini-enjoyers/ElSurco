@@ -47,55 +47,55 @@ public class Agricultor {
         return nombreAgricultor;
     }
 
-    public void setNombres(String nombres) {
-        this.nombreAgricultor = nombres;
+    public void setNombres(String nombreAgricultor) {
+        this.nombreAgricultor = nombreAgricultor;
     }
 
     public String getApellidos() {return apellidoAgricultor;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidoAgricultor = apellidos;
+    public void setApellidos(String apellidoAgricultor) {
+        this.apellidoAgricultor = apellidoAgricultor;
     }
 
     public String getDpi() {
         return dpiAgricultor;
     }
 
-    public void setDpi(String dpi) {
-        this.dpiAgricultor = dpi;
+    public void setDpi(String dpiAgricultor) {
+        this.dpiAgricultor = dpiAgricultor;
     }
 
     public Long getTelefono() {
         return telefonoAgricultor;
     }
 
-    public void setTelefono(Long telefono) {
-        this.telefonoAgricultor = telefono;
+    public void setTelefono(Long telefonoAgricultor) {
+        this.telefonoAgricultor = telefonoAgricultor;
     }
 
     public String getComunidadAldea() {
         return direccionAgricultor;
     }
 
-    public void setComunidadAldea(String comunidadAldea) {
-        this.direccionAgricultor = comunidadAldea;
+    public void setComunidadAldea(String direccionAgricultor) {
+        this.direccionAgricultor = direccionAgricultor;
     }
 
     public String getCoordenadasGps() {
         return gpsAgricultor;
     }
 
-    public void setCoordenadasGps(String coordenadasGps) {
-        this.gpsAgricultor = coordenadasGps;
+    public void setCoordenadasGps(String gpsAgricultor) {
+        this.gpsAgricultor = gpsAgricultor;
     }
 
     public String getHistoriaPerfil() {
         return historiaAgricultor;
     }
 
-    public void setHistoriaPerfil(String historiaPerfil) {
-        this.historiaAgricultor = historiaPerfil;
+    public void setHistoriaPerfil(String historiaAgricultor) {
+        this.historiaAgricultor = historiaAgricultor;
     }
 
     public int getIdLogin() {
