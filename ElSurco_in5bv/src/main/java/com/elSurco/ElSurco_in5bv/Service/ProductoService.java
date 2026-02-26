@@ -4,12 +4,9 @@ import com.elSurco.ElSurco_in5bv.Entity.Producto;
 import java.util.List;
 
 public interface ProductoService {
-
-    List<Producto> findAll();
-
-    Producto findById(Integer id);
-
-    Producto save(Producto producto);
-
-    void delete(Integer id);
+    List<Producto> listar();
+    Producto obtenerPorId(Integer id);
+    Producto agregar(Producto producto);
+    Producto actualizar(Integer id, Producto producto);
+    void eliminar(Integer id);
 }
