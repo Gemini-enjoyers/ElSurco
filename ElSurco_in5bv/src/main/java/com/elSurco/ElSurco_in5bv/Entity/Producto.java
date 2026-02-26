@@ -1,65 +1,106 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Productos")
+@Table(name = "Producto")
 public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idProducto")
     private Integer idProducto;
 
-    @Column(nullable = false)
-    private Integer idAgricultor;
+    @Column(name = "nombreProducto", nullable = false, length = 100)
+    private String nombreProducto;
 
-    @Column
-    private Integer idVerdura;
+    @Column(name = "descripcionProducto", length = 200)
+    private String descripcionProducto;
 
-    @Column
-    private Integer idFruta;
+    @Column(name = "precioProducto", nullable = false, precision = 10, scale = 2)
+    private BigDecimal precioProducto;
 
-    @Column(nullable = false)
-    private Double precioPorLibra;
+    @Column(name = "stockProducto", nullable = false)
+    private Integer stockProducto;
 
-    @Column(nullable = false)
-    private Integer cantidadLibras;
+    @Column(name = "fechaCosechaProducto", nullable = false)
+    private LocalDate fechaCosechaProducto;
 
-    @Column(nullable = false)
-    private LocalDate fechaCosecha;
+    // --- RELACIONES ---
 
-    public Producto() {
+    @ManyToOne
+    @JoinColumn(name = "idAgricultor", nullable = false)
+    private Agricultor agricultor;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategoria", nullable = false)
+    private Categoria categoria;
+
+    // --- GETTERS Y SETTERS MANUALES ---
+
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public Producto(Integer idProducto, Integer idAgricultor, Integer idVerdura, Integer idFruta, Double precioPorLibra, Integer cantidadLibras, LocalDate fechaCosecha) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
-        this.idAgricultor = idAgricultor;
-        this.idVerdura = idVerdura;
-        this.idFruta = idFruta;
-        this.precioPorLibra = precioPorLibra;
-        this.cantidadLibras = cantidadLibras;
-        this.fechaCosecha = fechaCosecha;
     }
 
-    public Integer getIdProducto() { return idProducto; }
-    public void setIdProducto(Integer idProducto) { this.idProducto = idProducto; }
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
 
-    public Integer getIdAgricultor() { return idAgricultor; }
-    public void setIdAgricultor(Integer idAgricultor) { this.idAgricultor = idAgricultor; }
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
 
-    public Integer getIdVerdura() { return idVerdura; }
-    public void setIdVerdura(Integer idVerdura) { this.idVerdura = idVerdura; }
+    public String getDescripcionProducto() {
+        return descripcionProducto;
+    }
 
-    public Integer getIdFruta() { return idFruta; }
-    public void setIdFruta(Integer idFruta) { this.idFruta = idFruta; }
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
+    }
 
-    public Double getPrecioPorLibra() { return precioPorLibra; }
-    public void setPrecioPorLibra(Double precioPorLibra) { this.precioPorLibra = precioPorLibra; }
+    public BigDecimal getPrecioProducto() {
+        return precioProducto;
+    }
 
-    public Integer getCantidadLibras() { return cantidadLibras; }
-    public void setCantidadLibras(Integer cantidadLibras) { this.cantidadLibras = cantidadLibras; }
+    public void setPrecioProducto(BigDecimal precioProducto) {
+        this.precioProducto = precioProducto;
+    }
 
-    public LocalDate getFechaCosecha() { return fechaCosecha; }
-    public void setFechaCosecha(LocalDate fechaCosecha) { this.fechaCosecha = fechaCosecha; }
+    public Integer getStockProducto() {
+        return stockProducto;
+    }
+
+    public void setStockProducto(Integer stockProducto) {
+        this.stockProducto = stockProducto;
+    }
+
+    public LocalDate getFechaCosechaProducto() {
+        return fechaCosechaProducto;
+    }
+
+    public void setFechaCosechaProducto(LocalDate fechaCosechaProducto) {
+        this.fechaCosechaProducto = fechaCosechaProducto;
+    }
+
+    public Agricultor getAgricultor() {
+        return agricultor;
+    }
+
+    public void setAgricultor(Agricultor agricultor) {
+        this.agricultor = agricultor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

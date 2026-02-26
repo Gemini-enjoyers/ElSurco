@@ -2,45 +2,45 @@ package com.elSurco.ElSurco_in5bv.Controller;
 
 import com.elSurco.ElSurco_in5bv.Entity.Categoria;
 import com.elSurco.ElSurco_in5bv.Service.CategoriaService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categorias")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/categoria")
 public class CategoriaController {
 
-    @Autowired
-    private CategoriaService categoriaService;
+    private final CategoriaService categoriaService;
 
-    @GetMapping
-    public ResponseEntity<List<Categoria>> listarTodas() {
-        return new ResponseEntity<>(categoriaService.findAll(), HttpStatus.OK);
+    public CategoriaController(CategoriaService categoriaService) {
+        this.categoriaService = categoriaService;
+    }
+
+    @GetMapping("/get")
+    public List<Categoria> listar() {
+        return categoriaService.listar();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Categoria> buscarPorId(@PathVariable Integer id) {
-        Categoria categoria = categoriaService.findById(id);
-        if (categoria != null) {
-            return new ResponseEntity<>(categoria, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public Categoria obtener(@PathVariable Integer id) {
+        return categoriaService.obtenerPorId(id);
     }
 
-    @PostMapping
-    public ResponseEntity<Categoria> guardar(@Valid @RequestBody Categoria categoria) {
-        Categoria nuevaCategoria = categoriaService.save(categoria);
-        return new ResponseEntity<>(nuevaCategoria, HttpStatus.CREATED);
+    @PostMapping("/post")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Categoria crear(@RequestBody Categoria categoria) {
+        return categoriaService.agregar(categoria);
+    }
+
+    @PutMapping("/put/{Id}")
+    public Categoria actualizar(@PathVariable("Id") Integer id, @RequestBody Categoria categoria) {
+        return categoriaService.actualizar(id, categoria);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
-        categoriaService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public Categoria eliminar(@PathVariable Integer id) {
+        categoriaService.eliminar(id);
+        return null;
     }
 }
