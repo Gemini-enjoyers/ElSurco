@@ -7,10 +7,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/voloracion")
-public class ValorcionController {
+public class ValoracionController {
     private final ValoracionService valoracionService;
 
-    public ValorcionController(ValoracionService valoracionService){
+    public ValoracionController(ValoracionService valoracionService){
         this.valoracionService = valoracionService;
     }
 
