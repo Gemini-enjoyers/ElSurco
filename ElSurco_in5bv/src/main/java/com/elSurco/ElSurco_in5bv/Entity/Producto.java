@@ -3,6 +3,8 @@ package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -30,6 +32,8 @@ public class Producto {
     @Min(value = 0, message = "el valor no puede ser 0")
     private Integer stockProducto;
 
+    @NotNull(message = "La fecha de la cosecha no puede ser nula")
+    @PastOrPresent(message = "La fecha de cosecha no puede estar en el futuro")
     @Column(name = "fechaCosechaProducto", nullable = false)
     private LocalDate fechaCosechaProducto;
 

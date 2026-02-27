@@ -14,7 +14,14 @@ public class Valoracion {
 private Integer idValoracion;
 @Column (name = "puntuacionValoracion")
 private Integer puntuacionValoracion;
-
+@Column (name = "comentarioValoracion", columnDefinition = "TEXT")
+private  String comentarioValoracion;
+@Column (name = "fechaValoracion")
+private LocalDate fechaValoraciom;
+@Column (name = "idProducto")
+private int idProducto;
+@Column (name = "idComprador")
+private int idComprador;
     public Integer getIdValoracion() {
         return idValoracion;
     }
@@ -62,15 +69,5 @@ private Integer puntuacionValoracion;
     public void setIdComprador(int idComprador) {
         this.idComprador = idComprador;
     }
-
-    @Column (name = "comentarioValoracion", columnDefinition = "TEXT")
-private  String comentarioValoracion;
-@Column (name = "fechaValoracion")
-private LocalDate fechaValoraciom;
-@Column (name = "idProducto")
-private int idProducto;
-@Column (name = "idComprador")
-private int idComprador;
-
 
 }
