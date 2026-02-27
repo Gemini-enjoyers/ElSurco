@@ -1,6 +1,9 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -20,9 +23,11 @@ public class Producto {
     private String descripcionProducto;
 
     @Column(name = "precioProducto", nullable = false, precision = 10, scale = 2)
+    @DecimalMin(value = "0.00", inclusive = false, message = "para realizar su pedido a domicilio el precio de su compra tiene que ser mayor a 0")
     private BigDecimal precioProducto;
 
     @Column(name = "stockProducto", nullable = false)
+    @Min(value = 0, message = "el valor no puede ser 0")
     private Integer stockProducto;
 
     @Column(name = "fechaCosechaProducto", nullable = false)
