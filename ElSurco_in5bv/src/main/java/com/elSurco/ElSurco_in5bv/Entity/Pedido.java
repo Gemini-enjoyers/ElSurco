@@ -27,9 +27,11 @@ public class Pedido {
     @Column(name = "totalPedido", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPedido;
 
+    @NotBlank (message = "No tiene pedidos pendientes")
     @Column(name = "cantidadPedido", nullable = false)
     private Integer cantidadPedido;
 
+    @NotBlank (message = "El pedido no tiene un estado asignado")
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoPedido", nullable = false)
     private EstadoPedido estadoPedido;
