@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductoServiceImpl implements ProductoService {
+public class    ProductoServiceImpl implements ProductoService {
 
     private final ProductoRepository productoRepository;
 

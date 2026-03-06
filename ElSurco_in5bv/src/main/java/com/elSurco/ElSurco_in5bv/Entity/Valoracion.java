@@ -17,7 +17,7 @@ private Integer puntuacionValoracion;
 @Column (name = "comentarioValoracion", columnDefinition = "TEXT")
 private  String comentarioValoracion;
 @Column (name = "fechaValoracion")
-private LocalDate fechaValoraciom;
+private LocalDate fechaValoracion;
 @Column (name = "idProducto")
 private int idProducto;
 @Column (name = "idComprador")
@@ -46,12 +46,12 @@ private int idComprador;
         this.comentarioValoracion = comentarioValoracion;
     }
 
-    public LocalDate getFechaValoraciom() {
-        return fechaValoraciom;
+    public LocalDate getFechaValoracion() {
+        return fechaValoracion;
     }
 
-    public void setFechaValoraciom(LocalDate fechaValoraciom) {
-        this.fechaValoraciom = fechaValoraciom;
+    public void setFechaValoracion(LocalDate fechaValoracion) {
+        this.fechaValoracion = fechaValoracion;
     }
 
     public int getIdProducto() {

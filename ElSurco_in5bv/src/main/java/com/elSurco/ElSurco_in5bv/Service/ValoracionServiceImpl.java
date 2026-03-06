@@ -34,7 +34,7 @@ public class ValoracionServiceImpl implements ValoracionService{
         if (existente != null){
             existente.setComentarioValoracion(valoracion.getComentarioValoracion());
             existente.setPuntuacionValoracion(valoracion.getPuntuacionValoracion());
-            existente.setFechaValoraciom(valoracion.getFechaValoraciom());
+            existente.setFechaValoracion(valoracion.getFechaValoracion());
             return valoracionRepository.save(existente);
         }
         return  null;
