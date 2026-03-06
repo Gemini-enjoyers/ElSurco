@@ -9,7 +9,7 @@ public class Agricultor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idAgricultor")
-    private int idAgricultor;
+    private Integer idAgricultor;
 
     @Column(name = "nombreAgricultor")
     private String  nombreAgricultor;
@@ -33,7 +33,7 @@ public class Agricultor {
     private String historiaAgricultor;
 
     @Column(name = "idLogin")
-    private int idLogin;
+    private Integer idLogin;
 
     public int getIdAgricultor() {
         return idAgricultor;

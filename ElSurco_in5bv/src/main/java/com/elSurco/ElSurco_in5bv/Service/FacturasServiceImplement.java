@@ -18,7 +18,7 @@ public class FacturasServiceImplement implements FacturasService{
 
     @Override
     public Facturas obtenerporid(Integer id){
-        return facturaRepositoty.findById(id).orElseThrow(() -> new RuntimeException("usuadhfadhbs"));
+        return facturaRepositoty.findById(id).orElseThrow(() -> new RuntimeException("Factura no encontrada"));
     }
 
     @Override

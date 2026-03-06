@@ -35,7 +35,7 @@ public class AgricultorController {
     }
 
     @PutMapping("/put/{Id}")
-    public Agricultor actualizar(@RequestBody Integer id, @RequestBody Agricultor agricultor){
+    public Agricultor actualizar(@PathVariable("Id") Integer id, @RequestBody Agricultor agricultor){
         return agricultorService.actualizar(id, agricultor);
     }
 

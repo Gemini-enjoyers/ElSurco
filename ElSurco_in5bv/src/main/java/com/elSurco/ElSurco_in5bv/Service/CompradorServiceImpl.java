@@ -27,15 +27,17 @@ public class CompradorServiceImpl implements CompradorService {
         comprador.setIdComprador(null);
         return  compradorRepository.save(comprador);
     }
-
     @Override
     public Comprador actualizar(Integer id, Comprador comprador) {
-     Comprador existente = obtenerPorId(id);
-     existente.setNombres(comprador.getNombres());
-     existente.setApellidos(comprador.getApellidos());
-     existente.setTelefono(comprador.getTelefono());
-     existente.setDireccionEntrega(comprador.getDireccionEntrega());
-     return compradorRepository.save(existente);
+        Comprador existente = obtenerPorId(id);
+
+        existente.setNombreComprador(comprador.getNombreComprador());
+        existente.setApellidoComprador(comprador.getApellidoComprador());
+        existente.setTelefonoComprador(comprador.getTelefonoComprador());
+        existente.setDireccionComprador(comprador.getDireccionComprador());
+        existente.setIdLogin(comprador.getIdLogin());
+
+        return compradorRepository.save(existente);
     }
     @Override
     public void eliminar(Integer id) {
