@@ -26,23 +26,11 @@ private  String comentarioValoracion;
 @PastOrPresent (message = "La fecha no puede ser futura")
 @Column (name = "fechaValoracion")
 private LocalDate fechaValoraciom;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/feature/bran
-@Column (name = "idProducto")
-private int idProducto;
-@Column (name = "idComprador")
-private int idComprador;
-<<<<<<< HEAD
-=======
-=======
     @Column (name = "idProducto")
     private Integer idProducto;
     @Column (name = "idComprador")
     private Integer idComprador;
->>>>>>> 7a85fe964c59855380cc0dec41339eb352353e30
->>>>>>> origin/feature/bran
+
     public Integer getIdValoracion() {
         return idValoracion;
     }
