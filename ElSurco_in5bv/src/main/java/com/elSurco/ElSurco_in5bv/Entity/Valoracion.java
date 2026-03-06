@@ -18,10 +18,10 @@ private Integer puntuacionValoracion;
 private  String comentarioValoracion;
 @Column (name = "fechaValoracion")
 private LocalDate fechaValoraciom;
-    @Column (name = "idProducto")
-    private Integer idProducto;
-    @Column (name = "idComprador")
-    private Integer idComprador;
+@Column (name = "idProducto")
+private int idProducto;
+@Column (name = "idComprador")
+private int idComprador;
     public Integer getIdValoracion() {
         return idValoracion;
     }
