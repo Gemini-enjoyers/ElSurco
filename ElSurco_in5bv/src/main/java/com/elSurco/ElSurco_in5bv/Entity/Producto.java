@@ -24,6 +24,7 @@ public class Producto {
     @Column(name = "descripcionProducto", length = 200)
     private String descripcionProducto;
 
+
     @Column(name = "precioProducto", nullable = false, precision = 10, scale = 2)
     @DecimalMin(value = "0.00", inclusive = false, message = "para realizar su pedido a domicilio el precio de su compra tiene que ser mayor a 0")
     private BigDecimal precioProducto;

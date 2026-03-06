@@ -8,11 +8,13 @@ import java.util.List;
 
 @Service
 public class AgricultorServiceImpl implements AgricultorService{
+
     private final AgricultorRepository agricultorRepository;
+    private final GoogleMapsService googleMapsService;
 
-
-    public AgricultorServiceImpl(AgricultorRepository agricultorRepository) {
+    public AgricultorServiceImpl(AgricultorRepository agricultorRepository, GoogleMapsService googleMapsService) {
         this.agricultorRepository = agricultorRepository;
+        this.googleMapsService = googleMapsService;
     }
 
     @Override
@@ -28,6 +30,12 @@ public class AgricultorServiceImpl implements AgricultorService{
     @Override
     public Agricultor agregar(Agricultor agricultor) {
         agricultor.setIdAgricultor(null);
+
+        if (agricultor.getComunidadAldea() != null && agricultor.getCoordenadasGps() == null) {
+            String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getComunidadAldea());
+            agricultor.setCoordenadasGps(coordenadas);
+        }
+
         return agricultorRepository.save(agricultor);
     }
 
@@ -40,9 +48,18 @@ public class AgricultorServiceImpl implements AgricultorService{
             agricultorExistente.setDpi(agricultor.getDpi());
             agricultorExistente.setTelefono(agricultor.getTelefono());
             agricultorExistente.setComunidadAldea(agricultor.getComunidadAldea());
-            agricultorExistente.setCoordenadasGps(agricultor.getCoordenadasGps());
+
+            if(agricultor.getCoordenadasGps() != null) {
+                agricultorExistente.setCoordenadasGps(agricultor.getCoordenadasGps());
+            } else {
+                String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getComunidadAldea());
+                agricultorExistente.setCoordenadasGps(coordenadas);
+            }
+
             agricultorExistente.setHistoriaPerfil(agricultor.getHistoriaPerfil());
             agricultorExistente.setIdLogin(agricultor.getIdLogin());
+
+            return agricultorRepository.save(agricultorExistente);
         }
         return null;
     }

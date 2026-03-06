@@ -1,20 +1,48 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 @Entity
 @Table (name =  "Comprador")
 public class Comprador {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idComprador")
     private Integer idComprador;
-    @Column (name = "nombreComprador")
+
+    @NotBlank(message = "El nombre de categoria es obligatorio.")
+    @Size(min = 2, max = 100, message = "El nombre debe tener 2 a 100 carractere.")
+    @Column(name = "nombreComprador")
     private String nombreComprador;
-    @Column (name = "apellidoComprador")
+
+    @NotBlank(message = "El apellido es obligatorio.")
+    @Size(min = 2, max = 100, message = "El apellido es obligatorio.")
+    @Column(name = "apellidoComprador")
     private String apellidoComprador;
-    @Column ( name = "telefonoComprador")
+
+    @NotBlank(message = "El numero de telefono no puede estar vacio.")
+    @Min(value = 10000000, message = "El numero de telefono no es valido")
+    @Max(value = 99999999, message = "El numero de telefono no puede ser mas de 8 digitos.")
+    @Column(name = "telefonoComprador")
     private Long telefonoComprador;
-    @Column (name = "direccionComprador")
+
+    @NotBlank(message = "La dirreccion tiene que ser obligatorio.")
+    @Size(max = 255, message = "La direccion es demaciado larga.")
+    @Column(name = "direccionComprador")
     private String direccionComprador;
+
+    @Column(name = "idLogin", nullable = false)
+    private Integer idLogin;
+
+    public Integer getIdLogin() {
+        return idLogin;
+    }
+    public void setIdLogin(Integer idLogin) {
+        this.idLogin = idLogin;
+    }
 
     public Integer getIdComprador() {
         return idComprador;
@@ -24,35 +52,35 @@ public class Comprador {
         this.idComprador = idComprador;
     }
 
-    public String getNombres() {
+    public String getNombreComprador() {
         return nombreComprador;
     }
 
-    public void setNombres(String nombreComprador) {
+    public void setNombreComprador(String nombreComprador) {
         this.nombreComprador = nombreComprador;
     }
 
-    public String getApellidos() {
+    public String getApellidoComprador() {
         return apellidoComprador;
     }
 
-    public void setApellidos(String apellidos) {
+    public void setApellidoComprador(String apellidoComprador) {
         this.apellidoComprador = apellidoComprador;
     }
 
-    public Long getTelefono() {
+    public Long getTelefonoComprador() {
         return telefonoComprador;
     }
 
-    public void setTelefono(Long telefono) {
+    public void setTelefonoComprador(Long telefonoComprador) {
         this.telefonoComprador = telefonoComprador;
     }
 
-    public String getDireccionEntrega() {
+    public String getDireccionComprador() {
         return direccionComprador;
     }
 
-    public void setDireccionEntrega(String direccionEntrega) {
+    public void setDireccionComprador(String direccionComprador) {
         this.direccionComprador = direccionComprador;
     }
 }
