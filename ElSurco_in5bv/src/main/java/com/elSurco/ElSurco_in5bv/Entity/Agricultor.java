@@ -41,7 +41,7 @@ public class Agricultor {
       @Column(name = "gpsAgricultor")
     private String gpsAgricultor;
 
-    @Size(max = 100, message = "La historia no debe sde seperar los 100 caracteres.")
+    @Size(max = 100, message = "La historia no debe de superar los 100 caracteres.")
     @Column(name = "historiaAgricultor")
     private String historiaAgricultor;
 
