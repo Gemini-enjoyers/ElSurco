@@ -38,8 +38,7 @@ public class Agricultor {
     @Column(name = "direccionAgricultor")
     private String direccionAgricultor;
 
-    @Pattern(regexp = "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$", message = "El formato GPS debe ser coordenadas válidas (Latitud, Longitud).")
-    @Column(name = "gpsAgricultor")
+      @Column(name = "gpsAgricultor")
     private String gpsAgricultor;
 
     @Size(max = 100, message = "La historia no debe sde seperar los 100 caracteres.")
