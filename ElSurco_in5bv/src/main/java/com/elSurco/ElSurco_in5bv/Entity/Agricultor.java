@@ -13,109 +13,62 @@ public class Agricultor {
     private Integer idAgricultor;
 
     @NotBlank(message = "El nombre es obligatorio.")
-    @Size(min = 2, max = 100, message = "El nombre debe tener 2 a 100 carractere.")
     @Column(name = "nombreAgricultor")
     private String nombreAgricultor;
 
     @NotBlank(message = "El apellido es obligatorio.")
-    @Size(min = 2, max = 100, message = "El apellido es obligatorio.")
     @Column(name = "apellidoAgricultor")
     private String apellidoAgricultor;
 
     @NotBlank(message = "El DPI es obligatorio.")
-    @Pattern(regexp = "//d{13}", message = "El DPI tiene que tener 13 numeros.")
+    @Pattern(regexp = "\\d{13}", message = "El DPI tiene que tener 13 números.")
     @Column(name = "dpiAgricultor")
     private String dpiAgricultor;
 
-    @NotBlank(message = "El numero de telefono no puede estar vacio.")
-    @Min(value = 10000000, message = "El numero de telefono no es valido")
-    @Max(value = 99999999, message = "El numero de telefono no puede ser mas de 8 digitos.")
+    @NotNull(message = "El número de teléfono no puede estar vacío.")
     @Column(name = "telefonoAgricultor")
     private Long telefonoAgricultor;
 
-    @NotBlank(message = "La dirreccion tiene que ser obligatorio.")
-    @Size(max = 255, message = "La direccion es demaciado larga.")
+    @NotBlank(message = "La dirección es obligatoria.")
     @Column(name = "direccionAgricultor")
     private String direccionAgricultor;
 
-      @Column(name = "gpsAgricultor")
+    @Column(name = "gpsAgricultor")
     private String gpsAgricultor;
 
-    @Size(max = 100, message = "La historia no debe sde seperar los 100 caracteres.")
     @Column(name = "historiaAgricultor")
     private String historiaAgricultor;
 
+    @NotNull(message = "El idLogin es obligatorio.")
     @Column(name = "idLogin")
     private Integer idLogin;
 
-    public int getIdAgricultor() {
-        return idAgricultor;
-    }
+    // --- GETTERS Y SETTERS
 
-    public void setIdAgricultor(Integer idAgricultor) {
-        this.idAgricultor = idAgricultor;
-    }
+    public Integer getIdAgricultor() { return idAgricultor; }
+    public void setIdAgricultor(Integer idAgricultor) { this.idAgricultor = idAgricultor; }
 
-    public String getNombres() {
-        return nombreAgricultor;
-    }
+    public String getNombreAgricultor() { return nombreAgricultor; }
+    public void setNombreAgricultor(String nombreAgricultor) { this.nombreAgricultor = nombreAgricultor; }
 
-    public void setNombres(String nombreAgricultor) {
-        this.nombreAgricultor = nombreAgricultor;
-    }
+    public String getApellidoAgricultor() { return apellidoAgricultor; }
+    public void setApellidoAgricultor(String apellidoAgricultor) { this.apellidoAgricultor = apellidoAgricultor; }
 
-    public String getApellidos() {return apellidoAgricultor;
-    }
+    public String getDpiAgricultor() { return dpiAgricultor; }
+    public void setDpiAgricultor(String dpiAgricultor) { this.dpiAgricultor = dpiAgricultor; }
 
-    public void setApellidos(String apellidoAgricultor) {
-        this.apellidoAgricultor = apellidoAgricultor;
-    }
+    public Long getTelefonoAgricultor() { return telefonoAgricultor; }
+    public void setTelefonoAgricultor(Long telefonoAgricultor) { this.telefonoAgricultor = telefonoAgricultor; }
 
-    public String getDpi() {
-        return dpiAgricultor;
-    }
+    public String getDireccionAgricultor() { return direccionAgricultor; }
+    public void setDireccionAgricultor(String direccionAgricultor) { this.direccionAgricultor = direccionAgricultor; }
 
-    public void setDpi(String dpiAgricultor) {
-        this.dpiAgricultor = dpiAgricultor;
-    }
+    public String getGpsAgricultor() { return gpsAgricultor; }
+    public void setGpsAgricultor(String gpsAgricultor) { this.gpsAgricultor = gpsAgricultor; }
 
-    public Long getTelefono() {
-        return telefonoAgricultor;
-    }
+    public String getHistoriaAgricultor() { return historiaAgricultor; }
+    public void setHistoriaAgricultor(String historiaAgricultor) { this.historiaAgricultor = historiaAgricultor; }
 
-    public void setTelefono(Long telefonoAgricultor) {
-           this.telefonoAgricultor = telefonoAgricultor;
-    }
-
-    public String getComunidadAldea() {
-        return direccionAgricultor;
-    }
-
-    public void setComunidadAldea(String direccionAgricultor) {
-        this.direccionAgricultor = direccionAgricultor;
-    }
-
-    public String getCoordenadasGps() {
-        return gpsAgricultor;
-    }
-
-    public void setCoordenadasGps(String gpsAgricultor) {
-        this.gpsAgricultor = gpsAgricultor;
-    }
-
-    public String getHistoriaPerfil() {
-        return historiaAgricultor;
-    }
-
-    public void setHistoriaPerfil(String historiaAgricultor) {
-        this.historiaAgricultor = historiaAgricultor;
-    }
-
-    public int getIdLogin() {
-        return idLogin;
-    }
-
-    public void setIdLogin(int idLogin) {
-        this.idLogin = idLogin;
-    }
+    public Integer getIdLogin() { return idLogin; }
+    public void setIdLogin(Integer idLogin) { this.idLogin = idLogin; }
 }

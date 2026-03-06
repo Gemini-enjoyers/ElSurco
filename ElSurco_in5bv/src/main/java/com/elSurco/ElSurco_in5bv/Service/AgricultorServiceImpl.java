@@ -31,9 +31,9 @@ public class AgricultorServiceImpl implements AgricultorService{
     public Agricultor agregar(Agricultor agricultor) {
         agricultor.setIdAgricultor(null);
 
-        if (agricultor.getComunidadAldea() != null && agricultor.getCoordenadasGps() == null) {
-            String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getComunidadAldea());
-            agricultor.setCoordenadasGps(coordenadas);
+        if (agricultor.getDireccionAgricultor() != null && agricultor.getGpsAgricultor() == null) {
+            String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getDireccionAgricultor());
+            agricultor.setGpsAgricultor(coordenadas);
         }
 
         return agricultorRepository.save(agricultor);
@@ -43,20 +43,20 @@ public class AgricultorServiceImpl implements AgricultorService{
     public Agricultor actualizar(Integer id, Agricultor agricultor) {
         Agricultor agricultorExistente = agricultorRepository.findById(id).orElse(null);
         if (agricultorExistente != null){
-            agricultorExistente.setNombres(agricultor.getNombres());
-            agricultorExistente.setApellidos(agricultor.getApellidos());
-            agricultorExistente.setDpi(agricultor.getDpi());
-            agricultorExistente.setTelefono(agricultor.getTelefono());
-            agricultorExistente.setComunidadAldea(agricultor.getComunidadAldea());
+            agricultorExistente.setNombreAgricultor(agricultor.getNombreAgricultor());
+            agricultorExistente.setApellidoAgricultor(agricultor.getApellidoAgricultor());
+            agricultorExistente.setDpiAgricultor(agricultor.getDpiAgricultor());
+            agricultorExistente.setTelefonoAgricultor(agricultor.getTelefonoAgricultor());
+            agricultorExistente.setDireccionAgricultor(agricultor.getDireccionAgricultor());
 
-            if(agricultor.getCoordenadasGps() != null) {
-                agricultorExistente.setCoordenadasGps(agricultor.getCoordenadasGps());
+            if(agricultor.getGpsAgricultor() != null) {
+                agricultorExistente.setGpsAgricultor(agricultor.getGpsAgricultor());
             } else {
-                String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getComunidadAldea());
-                agricultorExistente.setCoordenadasGps(coordenadas);
+                String coordenadas = googleMapsService.obtenerCoordenadas(agricultor.getDireccionAgricultor());
+                agricultorExistente.setGpsAgricultor(coordenadas);
             }
 
-            agricultorExistente.setHistoriaPerfil(agricultor.getHistoriaPerfil());
+            agricultorExistente.setHistoriaAgricultor(agricultor.getHistoriaAgricultor());
             agricultorExistente.setIdLogin(agricultor.getIdLogin());
 
             return agricultorRepository.save(agricultorExistente);
