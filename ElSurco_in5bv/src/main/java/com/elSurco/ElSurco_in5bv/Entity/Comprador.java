@@ -1,5 +1,10 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 @Entity
 @Table (name =  "Comprador")
 public class Comprador {
@@ -7,14 +12,28 @@ public class Comprador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idComprador")
     private Integer idComprador;
+
+    @NotBlank(message = "El nombre de categoria es obligatorio.")
+    @Size(min = 2, max = 100, message = "El nombre debe tener 2 a 100 carractere.")
     @Column(name = "nombreComprador")
     private String nombreComprador;
+
+    @NotBlank(message = "El apellido es obligatorio.")
+    @Size(min = 2, max = 100, message = "El apellido es obligatorio.")
     @Column(name = "apellidoComprador")
     private String apellidoComprador;
+
+    @NotBlank(message = "El numero de telefono no puede estar vacio.")
+    @Min(value = 10000000, message = "El numero de telefono no es valido")
+    @Max(value = 99999999, message = "El numero de telefono no puede ser mas de 8 digitos.")
     @Column(name = "telefonoComprador")
     private Long telefonoComprador;
+
+    @NotBlank(message = "La dirreccion tiene que ser obligatorio.")
+    @Size(max = 255, message = "La direccion es demaciado larga.")
     @Column(name = "direccionComprador")
     private String direccionComprador;
+
     @Column(name = "idLogin", nullable = false)
     private Integer idLogin;
 
