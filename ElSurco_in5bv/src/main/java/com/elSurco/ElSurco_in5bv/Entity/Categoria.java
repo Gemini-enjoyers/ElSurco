@@ -14,7 +14,7 @@ public class Categoria {
     private Integer idCategoria;
 
     @NotBlank(message = "El nombre de categoria es obligatorio.")
-    @Size(min = 2, max = 100, message = "El nombre debe tener 2 a 100 carractere.")
+    @Size(min = 2, max = 50, message = "El nombre debe tener 2 a 50 carractere.")
     @Column(name = "nombreCategoria", nullable = false, length = 50)
     private String nombreCategoria;
 
