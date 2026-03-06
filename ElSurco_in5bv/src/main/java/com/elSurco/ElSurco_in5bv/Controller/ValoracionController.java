@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/voloracion")
+@RequestMapping("/api/valoracion")
 public class ValoracionController {
     private final ValoracionService valoracionService;
 
@@ -30,7 +30,7 @@ public class ValoracionController {
         return  valoracionService.agregar(valoracion);
     }
 
-    @PutMapping("/put/{id}")
+    @PutMapping("/put/{Id}")
     public Valoracion actualizar(@PathVariable("Id") Integer id, @RequestBody Valoracion valoracion){
         return valoracionService.actualizar(id, valoracion);
     }
