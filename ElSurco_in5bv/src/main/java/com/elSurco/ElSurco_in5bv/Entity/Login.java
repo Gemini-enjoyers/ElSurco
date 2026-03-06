@@ -22,6 +22,14 @@ public class Login {
     @Column(name = "rolUsuario", nullable = false)
     private Rol rolUsuario;
 
+    public Login() {
+    }
+
+    public Login(String emailLogin, String passwordLogin, Rol rolUsuario) {
+        this.emailLogin = emailLogin;
+        this.passwordLogin = passwordLogin;
+        this.rolUsuario = rolUsuario;
+    }
 
     public Integer getIdLogin() {
         return idLogin;
