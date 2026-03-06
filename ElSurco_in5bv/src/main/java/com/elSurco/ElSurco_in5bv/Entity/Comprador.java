@@ -4,17 +4,26 @@ import jakarta.persistence.*;
 @Table (name =  "Comprador")
 public class Comprador {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idComprador")
     private Integer idComprador;
-    @Column (name = "nombreComprador")
+    @Column(name = "nombreComprador")
     private String nombreComprador;
-    @Column (name = "apellidoComprador")
+    @Column(name = "apellidoComprador")
     private String apellidoComprador;
-    @Column ( name = "telefonoComprador")
+    @Column(name = "telefonoComprador")
     private Long telefonoComprador;
-    @Column (name = "direccionComprador")
+    @Column(name = "direccionComprador")
     private String direccionComprador;
+    @Column(name = "idLogin", nullable = false)
+    private Integer idLogin;
+
+    public Integer getIdLogin() {
+        return idLogin;
+    }
+    public void setIdLogin(Integer idLogin) {
+        this.idLogin = idLogin;
+    }
 
     public Integer getIdComprador() {
         return idComprador;
@@ -24,35 +33,35 @@ public class Comprador {
         this.idComprador = idComprador;
     }
 
-    public String getNombres() {
+    public String getNombreComprador() {
         return nombreComprador;
     }
 
-    public void setNombres(String nombreComprador) {
+    public void setNombreComprador(String nombreComprador) {
         this.nombreComprador = nombreComprador;
     }
 
-    public String getApellidos() {
+    public String getApellidoComprador() {
         return apellidoComprador;
     }
 
-    public void setApellidos(String apellidos) {
+    public void setApellidoComprador(String apellidoComprador) {
         this.apellidoComprador = apellidoComprador;
     }
 
-    public Long getTelefono() {
+    public Long getTelefonoComprador() {
         return telefonoComprador;
     }
 
-    public void setTelefono(Long telefono) {
+    public void setTelefonoComprador(Long telefonoComprador) {
         this.telefonoComprador = telefonoComprador;
     }
 
-    public String getDireccionEntrega() {
+    public String getDireccionComprador() {
         return direccionComprador;
     }
 
-    public void setDireccionEntrega(String direccionEntrega) {
+    public void setDireccionComprador(String direccionComprador) {
         this.direccionComprador = direccionComprador;
     }
 }
