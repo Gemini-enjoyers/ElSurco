@@ -1,10 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,9 +15,13 @@ public class Producto {
     @Column(name = "idProducto")
     private Integer idProducto;
 
+    @NotBlank(message = "el nombre del Producto debe de estar o no aparece")
+    @Size (min = 3, max = 60, message = "el nombre del producto supera los 60 caracteres")
     @Column(name = "nombreProducto", nullable = false, length = 100)
     private String nombreProducto;
 
+    @NotBlank(message = "La descripcion no puede estar vacia")
+    @Size(min = 10, max = 200, message = "La descripcion debe de estar entre el 10 y el 200 de caracteres")
     @Column(name = "descripcionProducto", length = 200)
     private String descripcionProducto;
 

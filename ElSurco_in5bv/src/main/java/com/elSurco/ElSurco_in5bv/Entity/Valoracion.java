@@ -19,28 +19,16 @@ private  String comentarioValoracion;
 @Column (name = "fechaValoracion")
 private LocalDate fechaValoraciom;
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 @Column (name = "idProducto")
 private int idProducto;
 @Column (name = "idComprador")
 private int idComprador;
 =======
->>>>>>> f740a5d9bd11a3d8bece63e992592b176750e72a
     @Column (name = "idProducto")
     private Integer idProducto;
     @Column (name = "idComprador")
     private Integer idComprador;
-<<<<<<< HEAD
-=======
-@Column (name = "idProducto")
-private int idProducto;
-@Column (name = "idComprador")
-private int idComprador;
->>>>>>> origin/feature/andres
-=======
 >>>>>>> 7a85fe964c59855380cc0dec41339eb352353e30
->>>>>>> f740a5d9bd11a3d8bece63e992592b176750e72a
     public Integer getIdValoracion() {
         return idValoracion;
     }
