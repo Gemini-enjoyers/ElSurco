@@ -1,6 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Controller;
 import com.elSurco.ElSurco_in5bv.Entity.Facturas;
 import com.elSurco.ElSurco_in5bv.Service.FacturasService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import  java.util.List;
@@ -22,7 +23,7 @@ public class FacturaController {
 
     @PostMapping("/post")
     @ResponseStatus(HttpStatus.CREATED)
-    public Facturas crear(@RequestBody Facturas facturas){
+    public Facturas crear(@Valid @RequestBody Facturas facturas){
         return facturasService.crear(facturas);
     }
 

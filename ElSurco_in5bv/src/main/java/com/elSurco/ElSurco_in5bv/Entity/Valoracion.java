@@ -25,7 +25,7 @@ private  String comentarioValoracion;
 @NotNull(message = "EL campo fecha, es obligatoria ")
 @PastOrPresent (message = "La fecha no puede ser futura")
 @Column (name = "fechaValoracion")
-private LocalDate fechaValoraciom;
+private LocalDate fechaValoracion;
     @Column (name = "idProducto")
     private Integer idProducto;
     @Column (name = "idComprador")
@@ -55,12 +55,12 @@ private LocalDate fechaValoraciom;
         this.comentarioValoracion = comentarioValoracion;
     }
 
-    public LocalDate getFechaValoraciom() {
-        return fechaValoraciom;
+    public LocalDate getFechaValoracion() {
+        return fechaValoracion;
     }
 
-    public void setFechaValoraciom(LocalDate fechaValoraciom) {
-        this.fechaValoraciom = fechaValoraciom;
+    public void setFechaValoracion(LocalDate fechaValoracion) {
+        this.fechaValoracion = fechaValoracion;
     }
 
     public int getIdProducto() {

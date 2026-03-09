@@ -23,15 +23,15 @@ public class Pedido {
     @Column(name = "fechaPedido", nullable = false)
     private LocalDateTime fechaPedido;
 
-    @NotBlank (message = "El sistema no agrego ningun producto, revise si sus productos se agregaron correctamente")
+    @NotNull (message = "El sistema no agrego ningun producto, revise si sus productos se agregaron correctamente")
     @Column(name = "totalPedido", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPedido;
 
-    @NotBlank (message = "No tiene pedidos pendientes")
+    @NotNull (message = "No tiene pedidos pendientes")
     @Column(name = "cantidadPedido", nullable = false)
     private Integer cantidadPedido;
 
-    @NotBlank (message = "El pedido no tiene un estado asignado")
+    @NotNull (message = "El pedido no tiene un estado asignado")
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoPedido", nullable = false)
     private EstadoPedido estadoPedido;

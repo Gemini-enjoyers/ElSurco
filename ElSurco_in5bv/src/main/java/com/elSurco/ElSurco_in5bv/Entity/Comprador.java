@@ -1,9 +1,6 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table (name =  "Comprador")
@@ -23,7 +20,7 @@ public class Comprador {
     @Column(name = "apellidoComprador")
     private String apellidoComprador;
 
-    @NotBlank(message = "El numero de telefono no puede estar vacio.")
+    @NotNull(message = "El numero de telefono no puede estar vacio.")
     @Min(value = 10000000, message = "El numero de telefono no es valido")
     @Max(value = 99999999, message = "El numero de telefono no puede ser mas de 8 digitos.")
     @Column(name = "telefonoComprador")
