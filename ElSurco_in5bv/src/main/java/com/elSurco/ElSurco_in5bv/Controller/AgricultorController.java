@@ -2,6 +2,7 @@ package com.elSurco.ElSurco_in5bv.Controller;
 
 import com.elSurco.ElSurco_in5bv.Entity.Agricultor;
 import com.elSurco.ElSurco_in5bv.Service.AgricultorService;
+import jakarta.validation.Valid;
 import org.hibernate.cfg.AgroalSettings;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class AgricultorController {
 
     @PostMapping("/post")
     @ResponseStatus(HttpStatus.CREATED)
-    public Agricultor crear (@RequestBody Agricultor agricultor){
+    public Agricultor crear (@Valid @RequestBody Agricultor agricultor){
         return agricultorService.agregar(agricultor);
     }
 

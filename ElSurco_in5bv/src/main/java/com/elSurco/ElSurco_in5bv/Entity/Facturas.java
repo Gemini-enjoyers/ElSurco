@@ -1,5 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 @Entity
 @Table (name = "facturas")
 
@@ -7,19 +9,27 @@ public class Facturas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idfactoras")
-
     private Integer idfacturas;
+
+
+    @NotNull(message = "El NIT es obligatorio.")
+    @Min(value = 100000000, message = "El nit tiene que tener 9 digitos.")
+    @Max(value = 999999999, message = "El nit tiene que tener 9 digitos.")
     @Column(name = "nitfactura")
+    private Integer nitfactura;
 
-    private  Integer nitfactura;
+
     @Column(name = "fechaEmisionfac")
-
+    @NotBlank(message = "La fecha tiene que ser obligatoria.")
+    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "La fecha debe tener el formato YYYY-MM-DD.")
     private String fechaEmisionfac;
+
+    @NotNull(message = "El total de la factura tiene que ser obligatoria.")
+    @PositiveOrZero(message = "El total de puede ser negativo.")
     @Column(name = "totalfactura")
-
     private Integer totalfactura;
-    @Column(name = "idPedido")
 
+    @Column(name = "idPedido")
     private String idPedido;
 
     public Integer getIdfacturas() {

@@ -1,6 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "Agricultor")
@@ -11,18 +12,24 @@ public class Agricultor {
     @Column(name = "idAgricultor")
     private Integer idAgricultor;
 
+    @NotBlank(message = "El nombre es obligatorio.")
     @Column(name = "nombreAgricultor")
-    private String  nombreAgricultor;
+    private String nombreAgricultor;
 
+    @NotBlank(message = "El apellido es obligatorio.")
     @Column(name = "apellidoAgricultor")
     private String apellidoAgricultor;
 
+    @NotBlank(message = "El DPI es obligatorio.")
+    @Pattern(regexp = "\\d{13}", message = "El DPI tiene que tener 13 números.")
     @Column(name = "dpiAgricultor")
     private String dpiAgricultor;
 
+    @NotNull(message = "El número de teléfono no puede estar vacío.")
     @Column(name = "telefonoAgricultor")
     private Long telefonoAgricultor;
 
+    @NotBlank(message = "La dirección es obligatoria.")
     @Column(name = "direccionAgricultor")
     private String direccionAgricultor;
 
@@ -32,77 +39,36 @@ public class Agricultor {
     @Column(name = "historiaAgricultor")
     private String historiaAgricultor;
 
+    @NotNull(message = "El idLogin es obligatorio.")
     @Column(name = "idLogin")
     private Integer idLogin;
 
-    public int getIdAgricultor() {
-        return idAgricultor;
-    }
+    // --- GETTERS Y SETTERS
 
-    public void setIdAgricultor(Integer idAgricultor) {
-        this.idAgricultor = idAgricultor;
-    }
+    public Integer getIdAgricultor() { return idAgricultor; }
+    public void setIdAgricultor(Integer idAgricultor) { this.idAgricultor = idAgricultor; }
 
-    public String getNombres() {
-        return nombreAgricultor;
-    }
+    public String getNombreAgricultor() { return nombreAgricultor; }
+    public void setNombreAgricultor(String nombreAgricultor) { this.nombreAgricultor = nombreAgricultor; }
 
-    public void setNombres(String nombreAgricultor) {
-        this.nombreAgricultor = nombreAgricultor;
-    }
+    public String getApellidoAgricultor() { return apellidoAgricultor; }
+    public void setApellidoAgricultor(String apellidoAgricultor) { this.apellidoAgricultor = apellidoAgricultor; }
 
-    public String getApellidos() {return apellidoAgricultor;
-    }
+    public String getDpiAgricultor() { return dpiAgricultor; }
+    public void setDpiAgricultor(String dpiAgricultor) { this.dpiAgricultor = dpiAgricultor; }
 
-    public void setApellidos(String apellidoAgricultor) {
-        this.apellidoAgricultor = apellidoAgricultor;
-    }
+    public Long getTelefonoAgricultor() { return telefonoAgricultor; }
+    public void setTelefonoAgricultor(Long telefonoAgricultor) { this.telefonoAgricultor = telefonoAgricultor; }
 
-    public String getDpi() {
-        return dpiAgricultor;
-    }
+    public String getDireccionAgricultor() { return direccionAgricultor; }
+    public void setDireccionAgricultor(String direccionAgricultor) { this.direccionAgricultor = direccionAgricultor; }
 
-    public void setDpi(String dpiAgricultor) {
-        this.dpiAgricultor = dpiAgricultor;
-    }
+    public String getGpsAgricultor() { return gpsAgricultor; }
+    public void setGpsAgricultor(String gpsAgricultor) { this.gpsAgricultor = gpsAgricultor; }
 
-    public Long getTelefono() {
-        return telefonoAgricultor;
-    }
+    public String getHistoriaAgricultor() { return historiaAgricultor; }
+    public void setHistoriaAgricultor(String historiaAgricultor) { this.historiaAgricultor = historiaAgricultor; }
 
-    public void setTelefono(Long telefonoAgricultor) {
-           this.telefonoAgricultor = telefonoAgricultor;
-    }
-
-    public String getComunidadAldea() {
-        return direccionAgricultor;
-    }
-
-    public void setComunidadAldea(String direccionAgricultor) {
-        this.direccionAgricultor = direccionAgricultor;
-    }
-
-    public String getCoordenadasGps() {
-        return gpsAgricultor;
-    }
-
-    public void setCoordenadasGps(String gpsAgricultor) {
-        this.gpsAgricultor = gpsAgricultor;
-    }
-
-    public String getHistoriaPerfil() {
-        return historiaAgricultor;
-    }
-
-    public void setHistoriaPerfil(String historiaAgricultor) {
-        this.historiaAgricultor = historiaAgricultor;
-    }
-
-    public int getIdLogin() {
-        return idLogin;
-    }
-
-    public void setIdLogin(int idLogin) {
-        this.idLogin = idLogin;
-    }
+    public Integer getIdLogin() { return idLogin; }
+    public void setIdLogin(Integer idLogin) { this.idLogin = idLogin; }
 }
