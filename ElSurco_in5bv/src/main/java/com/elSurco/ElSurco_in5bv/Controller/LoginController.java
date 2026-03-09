@@ -1,46 +1,33 @@
 package com.elSurco.ElSurco_in5bv.Controller;
 
-import com.elSurco.ElSurco_in5bv.Entity.Login;
+import com.elSurco.ElSurco_in5bv.Service.AuthService;
 import com.elSurco.ElSurco_in5bv.Service.LoginService;
-import org.springframework.http.HttpStatus;
+import com.elSurco.ElSurco_in5bv.dto.LoginRequest;
+import com.elSurco.ElSurco_in5bv.dto.LoginResponse;
+import com.elSurco.ElSurco_in5bv.dto.RegisterRequest;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/login")
+@RequestMapping("/api/auth")
 public class LoginController {
 
-    private final LoginService loginService;
+    private final AuthService authService;
 
-    public LoginController(LoginService loginService) {
-        this.loginService = loginService;
+    public LoginController(AuthService authService) {
+        this.authService = authService;
     }
 
-    @GetMapping("/get")
-    public List<Login> listar() {
-        return loginService.listar();
+
+    @PostMapping("/register")
+    public String register(@Valid @RequestBody RegisterRequest req) {
+        authService.register(req);
+        return "Usuario registrado correctamente.";
     }
 
-    @GetMapping("/{id}")
-    public Login obtener(@PathVariable Integer id) {
-        return loginService.obtenerPorId(id);
-    }
-
-    @PostMapping("/post")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Login crear(@RequestBody Login login) {
-        return loginService.agregar(login);
-    }
-
-    @PutMapping("/put/{Id}")
-    public Login actualizar(@PathVariable("Id") Integer id, @RequestBody Login login) {
-        return loginService.actualizar(id, login);
-    }
-
-    @DeleteMapping("/{id}")
-    public Login eliminar(@PathVariable Integer id) {
-        loginService.eliminar(id);
-        return null;
+    // Endpoint para loguear: POST a http://localhost:8080/api/auth/login
+    @PostMapping("/login")
+    public LoginResponse login(@Valid @RequestBody LoginRequest req) {
+        return authService.login(req);
     }
 }

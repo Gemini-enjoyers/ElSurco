@@ -3,6 +3,7 @@ package com.elSurco.ElSurco_in5bv.Controller;
 import com.elSurco.ElSurco_in5bv.Entity.Comprador;
 import com.elSurco.ElSurco_in5bv.Service.CompradorService;
 import com.elSurco.ElSurco_in5bv.Entity.Comprador;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class CompradorController {
     public Comprador obtener(@PathVariable Integer id) { return compradorService.obtenerPorId(id);}
    @PostMapping("/post")
    @ResponseStatus (HttpStatus.CREATED)
-   public Comprador crear(@RequestBody Comprador comprador) {return compradorService.crear(comprador);}
+   public Comprador crear(@Valid @RequestBody Comprador comprador) {return compradorService.crear(comprador);}
    @PutMapping ("/put/{id}")
    public Comprador actualizar (@PathVariable Integer id, @RequestBody Comprador comprador) {
        return compradorService.actualizar(id, comprador);

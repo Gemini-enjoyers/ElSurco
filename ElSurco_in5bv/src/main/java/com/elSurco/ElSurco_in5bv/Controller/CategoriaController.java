@@ -2,6 +2,7 @@ package com.elSurco.ElSurco_in5bv.Controller;
 
 import com.elSurco.ElSurco_in5bv.Entity.Categoria;
 import com.elSurco.ElSurco_in5bv.Service.CategoriaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CategoriaController {
 
     @PostMapping("/post")
     @ResponseStatus(HttpStatus.CREATED)
-    public Categoria crear(@RequestBody Categoria categoria) {
+    public Categoria crear(@Valid @RequestBody Categoria categoria) {
         return categoriaService.agregar(categoria);
     }
 

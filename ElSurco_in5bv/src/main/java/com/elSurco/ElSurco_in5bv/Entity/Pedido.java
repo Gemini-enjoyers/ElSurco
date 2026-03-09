@@ -2,6 +2,10 @@ package com.elSurco.ElSurco_in5bv.Entity;
 
 import com.elSurco.ElSurco_in5bv.Util.EstadoPedido;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -14,15 +18,20 @@ public class Pedido {
     @Column(name = "idPedido")
     private Integer idPedido;
 
+    @NotNull (message = "La fecha es obligatoria")
+    @PastOrPresent (message = "La fecha no puede ser futura")
     @Column(name = "fechaPedido", nullable = false)
     private LocalDateTime fechaPedido;
 
+    @NotNull (message = "El sistema no agrego ningun producto, revise si sus productos se agregaron correctamente")
     @Column(name = "totalPedido", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPedido;
 
+    @NotNull (message = "No tiene pedidos pendientes")
     @Column(name = "cantidadPedido", nullable = false)
     private Integer cantidadPedido;
 
+    @NotNull (message = "El pedido no tiene un estado asignado")
     @Enumerated(EnumType.STRING)
     @Column(name = "estadoPedido", nullable = false)
     private EstadoPedido estadoPedido;
