@@ -1,6 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -12,16 +13,24 @@ public class Valoracion {
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 @Column (name = "idValoracion")
 private Integer idValoracion;
+
+@Min(value = 1, message = "la valoracion minima es 1")
+@Max(value = 5, message = "La valoracion maxima es 5")
 @Column (name = "puntuacionValoracion")
 private Integer puntuacionValoracion;
+
+@Size (max = 200, message = "El maximo de caracteres son 200")
 @Column (name = "comentarioValoracion", columnDefinition = "TEXT")
 private  String comentarioValoracion;
+@NotNull(message = "EL campo fecha, es obligatoria ")
+@PastOrPresent (message = "La fecha no puede ser futura")
 @Column (name = "fechaValoracion")
-private LocalDate fechaValoraciom;
+private LocalDate fechaValoracion;
     @Column (name = "idProducto")
     private Integer idProducto;
     @Column (name = "idComprador")
     private Integer idComprador;
+
     public Integer getIdValoracion() {
         return idValoracion;
     }
@@ -46,12 +55,12 @@ private LocalDate fechaValoraciom;
         this.comentarioValoracion = comentarioValoracion;
     }
 
-    public LocalDate getFechaValoraciom() {
-        return fechaValoraciom;
+    public LocalDate getFechaValoracion() {
+        return fechaValoracion;
     }
 
-    public void setFechaValoraciom(LocalDate fechaValoraciom) {
-        this.fechaValoraciom = fechaValoraciom;
+    public void setFechaValoracion(LocalDate fechaValoracion) {
+        this.fechaValoracion = fechaValoracion;
     }
 
     public int getIdProducto() {
