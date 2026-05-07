@@ -17,43 +17,43 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public List<Login> listar() {
+    public List<Login> getAll() {
         return loginRepository.findAll();
     }
 
     @Override
-    public Login obtenerPorId(Integer id) {
+    public Login getById(Integer id) {
         return loginRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario Login con ID Erróneo"));
+                .orElseThrow(() -> new RuntimeException("Login User with wrong ID"));
     }
 
     @Override
-    public Login agregar(Login login) {
+    public Login create(Login login) {
         login.setIdLogin(null);
         return loginRepository.save(login);
     }
 
     @Override
-    public Login actualizar(Integer id, Login login) {
-        Login loginExistente = loginRepository.findById(id).orElse(null);
+    public Login update(Integer id, Login login) {
+        Login existingLogin = loginRepository.findById(id).orElse(null);
 
-        if (loginExistente != null) {
-            loginExistente.setEmailLogin(login.getEmailLogin());
-            loginExistente.setPasswordLogin(login.getPasswordLogin());
-            loginExistente.setRolUsuario(login.getRolUsuario());
+        if (existingLogin != null) {
+            existingLogin.setLoginEmail(login.getLoginEmail());
+            existingLogin.setLoginPassword(login.getLoginPassword());
+            existingLogin.setUserRole(login.getUserRole());
 
-            return loginRepository.save(loginExistente);
+            return loginRepository.save(existingLogin);
         }
         return null;
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void delete(Integer id) {
         loginRepository.deleteById(id);
     }
 
     @Override
-    public Optional<Login> obtenerPorEmail(String email) {
-        return loginRepository.findByEmailLogin(email);
+    public Optional<Login> getByEmail(String email) {
+        return loginRepository.findByLoginEmail(email);
     }
 }
