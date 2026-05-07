@@ -23,7 +23,7 @@ public class AuthService {
             throw new IllegalArgumentException("Email is already registered.");
         }
 
-        // Encriptar la contraseña que viene en la entidad Login
+        // Encriptar la contraseña usando lo que enseñó el profe
         String hash = passwordEncoder.encode(login.getLoginPassword());
         login.setLoginPassword(hash);
 
@@ -37,7 +37,7 @@ public class AuthService {
         boolean isMatch = passwordEncoder.matches(loginRequest.getLoginPassword(), loginEntity.getLoginPassword());
         if (!isMatch) throw new IllegalArgumentException("Incorrect password");
 
-        // Como ya no hay LoginResponse (DTO), devolvemos un Map con los datos
+        // Devolvemos un Map en lugar del DTO que eliminaste
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Login successful");
         response.put("idLogin", loginEntity.getIdLogin());
