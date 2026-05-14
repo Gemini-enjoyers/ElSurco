@@ -37,11 +37,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Para que jale Postman
                 .authorizeHttpRequests(auth -> auth
                         // Quitamos "/login" de permitAll porque ahora es interno
-                        .requestMatchers("/register", "/css/**", "/styles.css", "/static/**", "/api/auth/**").permitAll()
+                        .requestMatchers("/register", "/css/**", "/styles.css", "/static/**", "/api/auth/**", "/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        // .loginPage("/login") <--- ¡BORRAMOS ESTO PARA USAR EL PREDETERMINADO!
+                        .loginPage("/login")
                         .defaultSuccessUrl("/home", true)
                         .permitAll()
                 )
