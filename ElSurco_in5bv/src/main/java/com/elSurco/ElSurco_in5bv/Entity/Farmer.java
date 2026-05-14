@@ -3,6 +3,10 @@ package com.elSurco.ElSurco_in5bv.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import javax.xml.crypto.Data;
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name = "Farmer")
 public class Farmer {
@@ -12,8 +16,8 @@ public class Farmer {
     private Integer idFarmer;
 
     @NotBlank(message = "Name is required.")
-    @Column(name = "farmerName")
-    private String farmerName;
+    @Column(name = "farmerFirstName")
+    private String farmerFName;
 
     @NotBlank(message = "Last name is required.")
     @Column(name = "farmerLastName")
@@ -21,7 +25,7 @@ public class Farmer {
 
     @NotBlank(message = "ID card (DPI) is required.")
     @Pattern(regexp = "\\d{13}", message = "ID card must have 13 digits.")
-    @Column(name = "farmerIdCard")
+    @Column(name = "farmerDpi")
     private String farmerIdCard;
 
     @NotNull(message = "Phone number cannot be empty.")
@@ -35,29 +39,111 @@ public class Farmer {
     @Column(name = "farmerGps")
     private String farmerGps;
 
-    @Column(name = "farmerStory")
-    private String farmerStory;
+    @Column(name = "farmerHistory")
+    private String farmerHistory;
 
-    @NotNull(message = "loginId is required.")
-    @Column(name = "loginId")
-    private Integer loginId;
+    @Column(name = "farmerAddress", nullable = false, updatable = false)
+    private LocalDate registrationDate;
 
-    public Integer getIdFarmer() { return idFarmer; }
-    public void setIdFarmer(Integer idFarmer) { this.idFarmer = idFarmer; }
-    public String getFarmerName() { return farmerName; }
-    public void setFarmerName(String farmerName) { this.farmerName = farmerName; }
-    public String getFarmerLastName() { return farmerLastName; }
-    public void setFarmerLastName(String farmerLastName) { this.farmerLastName = farmerLastName; }
-    public String getFarmerIdCard() { return farmerIdCard; }
-    public void setFarmerIdCard(String farmerIdCard) { this.farmerIdCard = farmerIdCard; }
-    public Long getFarmerPhone() { return farmerPhone; }
-    public void setFarmerPhone(Long farmerPhone) { this.farmerPhone = farmerPhone; }
-    public String getFarmerAddress() { return farmerAddress; }
-    public void setFarmerAddress(String farmerAddress) { this.farmerAddress = farmerAddress; }
-    public String getFarmerGps() { return farmerGps; }
-    public void setFarmerGps(String farmerGps) { this.farmerGps = farmerGps; }
-    public String getFarmerStory() { return farmerStory; }
-    public void setFarmerStory(String farmerStory) { this.farmerStory = farmerStory; }
-    public Integer getLoginId() { return loginId; }
-    public void setLoginId(Integer loginId) { this.loginId = loginId; }
+    @PrePersist
+    protected void onCreate() {
+        this.registrationDate = LocalDate.now();
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUser")
+    private User idUser;
+
+    public Farmer(Integer idFarmer, String farmerFName, String farmerLastName, String farmerIdCard, Long farmerPhone, String farmerAddress, String farmerGps, String farmerHistory, LocalDate registrationDate, User idUser) {
+        this.idFarmer = idFarmer;
+        this.farmerFName = farmerFName;
+        this.farmerLastName = farmerLastName;
+        this.farmerIdCard = farmerIdCard;
+        this.farmerPhone = farmerPhone;
+        this.farmerAddress = farmerAddress;
+        this.farmerGps = farmerGps;
+        this.farmerHistory = farmerHistory;
+        this.registrationDate = registrationDate;
+        this.idUser = idUser;
+    }
+
+    public Integer getIdFarmer() {
+        return idFarmer;
+    }
+
+    public void setIdFarmer(Integer idFarmer) {
+        this.idFarmer = idFarmer;
+    }
+
+    public String getFarmerFName() {
+        return farmerFName;
+    }
+
+    public void setFarmerFName(String farmerFName) {
+        this.farmerFName = farmerFName;
+    }
+
+    public String getFarmerLastName() {
+        return farmerLastName;
+    }
+
+    public void setFarmerLastName(String farmerLastName) {
+        this.farmerLastName = farmerLastName;
+    }
+
+    public String getFarmerIdCard() {
+        return farmerIdCard;
+    }
+
+    public void setFarmerIdCard(String farmerIdCard) {
+        this.farmerIdCard = farmerIdCard;
+    }
+
+    public Long getFarmerPhone() {
+        return farmerPhone;
+    }
+
+    public void setFarmerPhone(Long farmerPhone) {
+        this.farmerPhone = farmerPhone;
+    }
+
+    public String getFarmerAddress() {
+        return farmerAddress;
+    }
+
+    public void setFarmerAddress(String farmerAddress) {
+        this.farmerAddress = farmerAddress;
+    }
+
+    public String getFarmerGps() {
+        return farmerGps;
+    }
+
+    public void setFarmerGps(String farmerGps) {
+        this.farmerGps = farmerGps;
+    }
+
+    public String getFarmerHistory() {
+        return farmerHistory;
+    }
+
+    public void setFarmerHistory(String farmerHistory) {
+        this.farmerHistory = farmerHistory;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public User getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
+    }
 }
