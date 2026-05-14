@@ -4,12 +4,24 @@ import com.elSurco.ElSurco_in5bv.Util.Status;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name =  "Users")
-public class User{
+@Table(name = "Users")
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUser")
     private Integer idUser;
+
+    // --- CAMPOS NUEVOS QUE FALTABAN DE TU SQL ---
+    @Column(name = "userFirstName") // Ojo: pon "userFirtName" si no lo corregiste en la base de datos
+    private String userFirstName;
+
+    @Column(name = "userLastName")
+    private String userLastName;
+
+    @Column(name = "handle")
+    private String handle;
+    // ---------------------------------------------
 
     @Column(name = "userEmail")
     private String Uemail;
@@ -21,68 +33,55 @@ public class User{
     private String Uadress;
 
     @Column(name = "userPhone")
-    private String Uphone;
+    private Long Uphone; // Cambiado a Long porque en tu SQL es bigint
 
-
-
-    @Enumerated(EnumType.STRING) // Importante: Guarda el texto (ACTIVE)
+    @Enumerated(EnumType.STRING)
     @Column(name = "userStatus")
     private Status uStatus = Status.ACTIVE;
 
-    public User(Integer idUser, String uemail, String upassword, String uadress, String uphone, Status uStatus) {
+    // 1. CONSTRUCTOR VACÍO (Obligatorio para Spring Boot/Hibernate)
+    public User() {
+    }
+
+    // 2. CONSTRUCTOR CON PARÁMETROS (Actualizado con los nuevos campos)
+    public User(Integer idUser, String userFirstName, String userLastName, String handle, String uemail, String upassword, String uadress, Long uphone, Status uStatus) {
         this.idUser = idUser;
-        Uemail = uemail;
-        Upassword = upassword;
-        Uadress = uadress;
-        Uphone = uphone;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.handle = handle;
+        this.Uemail = uemail;
+        this.Upassword = upassword;
+        this.Uadress = uadress;
+        this.Uphone = uphone;
         this.uStatus = uStatus;
     }
 
-    public Integer getIdUser() {
-        return idUser;
-    }
+    // --- GETTERS Y SETTERS ---
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
-    }
+    public Integer getIdUser() { return idUser; }
+    public void setIdUser(Integer idUser) { this.idUser = idUser; }
 
-    public String getUemail() {
-        return Uemail;
-    }
+    public String getUserFirstName() { return userFirstName; }
+    public void setUserFirstName(String userFirstName) { this.userFirstName = userFirstName; }
 
-    public void setUemail(String uemail) {
-        Uemail = uemail;
-    }
+    public String getUserLastName() { return userLastName; }
+    public void setUserLastName(String userLastName) { this.userLastName = userLastName; }
 
-    public String getUpassword() {
-        return Upassword;
-    }
+    public String getHandle() { return handle; }
+    public void setHandle(String handle) { this.handle = handle; }
 
-    public void setUpassword(String upassword) {
-        Upassword = upassword;
-    }
+    public String getUemail() { return Uemail; }
+    public void setUemail(String uemail) { Uemail = uemail; }
 
-    public String getUadress() {
-        return Uadress;
-    }
+    public String getUpassword() { return Upassword; }
+    public void setUpassword(String upassword) { Upassword = upassword; }
 
-    public void setUadress(String uadress) {
-        Uadress = uadress;
-    }
+    public String getUadress() { return Uadress; }
+    public void setUadress(String uadress) { Uadress = uadress; }
 
-    public String getUphone() {
-        return Uphone;
-    }
+    public Long getUphone() { return Uphone; }
+    public void setUphone(Long uphone) { Uphone = uphone; }
 
-    public void setUphone(String uphone) {
-        Uphone = uphone;
-    }
-
-    public Status getuStatus() {
-        return uStatus;
-    }
-
-    public void setuStatus(Status uStatus) {
-        this.uStatus = uStatus;
-    }
+    public Status getuStatus() { return uStatus; }
+    public void setuStatus(Status uStatus) { this.uStatus = uStatus; }
 }
