@@ -4,6 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -11,24 +16,40 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
-                // Deshabilitar CSRF para poder hacer pruebas en Postman sin problemas
-                .csrf(csrf -> csrf.disable())
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+        UserDetails user = User.builder()
+                .username("admin")
+                .password(passwordEncoder.encode("1234"))
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(user);
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable()) // Para que jale Postman
                 .authorizeHttpRequests(auth -> auth
-                        // 1. TAREA: Permisos para archivos CSS, imágenes y JS (Referencia del profe)
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/*.jpg", "/*.png").permitAll()
-
-                        // 2. TAREA: Permisos a la ruta de register y login de El Surco
-                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
-
-                        // 3. Bloquear todo el resto del sistema (Requiere autenticación)
+                        // Quitamos "/login" de permitAll porque ahora es interno
+                        .requestMatchers("/register", "/css/**", "/styles.css", "/static/**", "/api/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                // Estructura adicional que enseñó el profe:
-                .formLogin(form -> form.permitAll())
-                .logout(logout -> logout.permitAll())
-                .build();
+                .formLogin(form -> form
+                        // .loginPage("/login") <--- ¡BORRAMOS ESTO PARA USAR EL PREDETERMINADO!
+                        .defaultSuccessUrl("/home", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll()
+                );
+
+        return http.build();
     }
 }

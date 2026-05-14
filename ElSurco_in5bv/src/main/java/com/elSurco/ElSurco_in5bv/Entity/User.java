@@ -12,76 +12,49 @@ public class User {
     @Column(name = "idUser")
     private Integer idUser;
 
-    // --- CAMPOS NUEVOS QUE FALTABAN DE TU SQL ---
-    @Column(name = "userFirstName") // Ojo: pon "userFirtName" si no lo corregiste en la base de datos
-    private String userFirstName;
+    @Column(name = "userFirtName", nullable = false)
+    private String userFirtName;
 
-    @Column(name = "userLastName")
+    @Column(name = "userLastName", nullable = false)
     private String userLastName;
 
-    @Column(name = "handle")
+    @Column(name = "handle", unique = true, nullable = false)
     private String handle;
-    // ---------------------------------------------
 
-    @Column(name = "userEmail")
-    private String Uemail;
+    @Column(name = "userEmail", unique = true, nullable = false)
+    private String userEmail;
 
-    @Column(name = "userPassword")
-    private String Upassword;
+    @Column(name = "userPassword", nullable = false)
+    private String userPassword;
 
-    @Column(name = "userAddress")
-    private String Uadress;
+    @Column(name = "userAddress", nullable = false)
+    private String userAddress;
 
-    @Column(name = "userPhone")
-    private Long Uphone; // Cambiado a Long porque en tu SQL es bigint
+    @Column(name = "userPhone", nullable = false)
+    private Long userPhone;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "userStatus")
-    private Status uStatus = Status.ACTIVE;
+    private Status userStatus = Status.ACTIVE;
 
-    // 1. CONSTRUCTOR VACÍO (Obligatorio para Spring Boot/Hibernate)
-    public User() {
-    }
-
-    // 2. CONSTRUCTOR CON PARÁMETROS (Actualizado con los nuevos campos)
-    public User(Integer idUser, String userFirstName, String userLastName, String handle, String uemail, String upassword, String uadress, Long uphone, Status uStatus) {
-        this.idUser = idUser;
-        this.userFirstName = userFirstName;
-        this.userLastName = userLastName;
-        this.handle = handle;
-        this.Uemail = uemail;
-        this.Upassword = upassword;
-        this.Uadress = uadress;
-        this.Uphone = uphone;
-        this.uStatus = uStatus;
-    }
-
-    // --- GETTERS Y SETTERS ---
+    public User() {}
 
     public Integer getIdUser() { return idUser; }
     public void setIdUser(Integer idUser) { this.idUser = idUser; }
-
-    public String getUserFirstName() { return userFirstName; }
-    public void setUserFirstName(String userFirstName) { this.userFirstName = userFirstName; }
-
+    public String getUserFirtName() { return userFirtName; }
+    public void setUserFirtName(String userFirtName) { this.userFirtName = userFirtName; }
     public String getUserLastName() { return userLastName; }
     public void setUserLastName(String userLastName) { this.userLastName = userLastName; }
-
     public String getHandle() { return handle; }
     public void setHandle(String handle) { this.handle = handle; }
-
-    public String getUemail() { return Uemail; }
-    public void setUemail(String uemail) { Uemail = uemail; }
-
-    public String getUpassword() { return Upassword; }
-    public void setUpassword(String upassword) { Upassword = upassword; }
-
-    public String getUadress() { return Uadress; }
-    public void setUadress(String uadress) { Uadress = uadress; }
-
-    public Long getUphone() { return Uphone; }
-    public void setUphone(Long uphone) { Uphone = uphone; }
-
-    public Status getuStatus() { return uStatus; }
-    public void setuStatus(Status uStatus) { this.uStatus = uStatus; }
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+    public String getUserPassword() { return userPassword; }
+    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
+    public String getUserAddress() { return userAddress; }
+    public void setUserAddress(String userAddress) { this.userAddress = userAddress; }
+    public Long getUserPhone() { return userPhone; }
+    public void setUserPhone(Long userPhone) { this.userPhone = userPhone; }
+    public Status getUserStatus() { return userStatus; }
+    public void setUserStatus(Status userStatus) { this.userStatus = userStatus; }
 }

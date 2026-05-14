@@ -35,14 +35,16 @@ public class UserServiceImpl implements UserService {
     public User update(Integer id, User user) {
         User existingUser = getById(id);
 
-        existingUser.setUserFirstName(user.getUserFirstName());
+        existingUser.setUserFirtName(user.getUserFirtName());
+
         existingUser.setUserLastName(user.getUserLastName());
         existingUser.setHandle(user.getHandle());
-        existingUser.setUemail(user.getUemail());
-        existingUser.setUpassword(user.getUpassword());
-        existingUser.setUadress(user.getUadress());
-        existingUser.setUphone(user.getUphone());
-        existingUser.setuStatus(user.getuStatus());
+
+        existingUser.setUserEmail(user.getUserEmail());
+        existingUser.setUserPassword(user.getUserPassword());
+        existingUser.setUserAddress(user.getUserAddress());
+        existingUser.setUserPhone(user.getUserPhone());
+        existingUser.setUserStatus(user.getUserStatus());
 
         return userRepository.save(existingUser);
     }
