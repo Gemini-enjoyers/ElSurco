@@ -5,6 +5,9 @@ use ElSurcoDB_in5bv;
 -- 1. USUARIOS
 create table Users(
     idUser int auto_increment primary key,
+    userFirtName varchar(105) not null,
+    userLastName varchar(105) not null,
+    handle varchar(50) unique not null,
     userEmail varchar(100) unique not null,
     userPassword varchar(255) not null,
     userAddress varchar(200) not null,
