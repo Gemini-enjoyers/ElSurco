@@ -1,6 +1,5 @@
 package com.elSurco.ElSurco_in5bv.Controller;
 
-import com.elSurco.ElSurco_in5bv.Entity.Login;
 import com.elSurco.ElSurco_in5bv.Service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

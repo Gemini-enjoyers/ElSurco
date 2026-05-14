@@ -1,7 +1,5 @@
 package com.elSurco.ElSurco_in5bv.Service;
 
-import com.elSurco.ElSurco_in5bv.Entity.Login;
-import com.elSurco.ElSurco_in5bv.Repository.LoginRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
