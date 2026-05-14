@@ -1,36 +1,35 @@
 package com.elSurco.ElSurco_in5bv.Entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Review")
+@Table(name = "Ratings") // <-- Aquí le decimos que use la tabla Ratings de la BD
 public class Review {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idReview")
+    @Column(name = "idRating") // El ID en la BD se llama idRating
     private Integer idReview;
 
-    @Min(value = 1, message = "Minimum score is 1")
-    @Max(value = 5, message = "Maximum score is 5")
-    @Column(name = "reviewScore")
+    @Column(name = "ratingScore", nullable = false) // Mapeado a la BD
     private Integer reviewScore;
 
-    @Size(max = 200, message = "Maximum 200 characters")
-    @Column(name = "reviewComment", columnDefinition = "TEXT")
+    @Column(name = "ratingComment", columnDefinition = "TEXT")
     private String reviewComment;
 
-    @NotNull(message = "Date field is required")
-    @PastOrPresent(message = "Date cannot be in the future")
-    @Column(name = "reviewDate")
+    @Column(name = "ratingDate", insertable = false, updatable = false)
     private LocalDate reviewDate;
 
-    @Column(name = "idProduct")
-    private Integer idProduct;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idProduct", nullable = false)
+    private Product product;
 
-    @Column(name = "idBuyer")
-    private Integer idBuyer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUser", nullable = false)
+    private User user;
+
+    public Review() {}
 
     public Integer getIdReview() { return idReview; }
     public void setIdReview(Integer idReview) { this.idReview = idReview; }
@@ -40,8 +39,8 @@ public class Review {
     public void setReviewComment(String reviewComment) { this.reviewComment = reviewComment; }
     public LocalDate getReviewDate() { return reviewDate; }
     public void setReviewDate(LocalDate reviewDate) { this.reviewDate = reviewDate; }
-    public Integer getIdProduct() { return idProduct; }
-    public void setIdProduct(Integer idProduct) { this.idProduct = idProduct; }
-    public Integer getIdBuyer() { return idBuyer; }
-    public void setIdBuyer(Integer idBuyer) { this.idBuyer = idBuyer; }
+    public Product getProduct() { return product; }
+    public void setProduct(Product product) { this.product = product; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

@@ -1,5 +1,7 @@
 package com.elSurco.ElSurco_in5bv.Service;
 
+import com.elSurco.ElSurco_in5bv.Entity.User;
+import com.elSurco.ElSurco_in5bv.Repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -8,39 +10,38 @@ import java.util.Map;
 
 @Service
 public class AuthService {
-    private final LoginRepository loginRepository;
+
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthService(LoginRepository loginRepository, PasswordEncoder passwordEncoder) {
-        this.loginRepository = loginRepository;
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void register(Login login) {
-        if (loginRepository.existsByLoginEmail(login.getLoginEmail())) {
+    public void register(User user) {
+        if (userRepository.existsByUserEmail(user.getUserEmail())) {
             throw new IllegalArgumentException("Email is already registered.");
         }
 
-        // Encriptar la contraseña usando lo que enseñó el profe
-        String hash = passwordEncoder.encode(login.getLoginPassword());
-        login.setLoginPassword(hash);
+        String hash = passwordEncoder.encode(user.getUserPassword());
+        user.setUserPassword(hash);
 
-        loginRepository.save(login);
+        userRepository.save(user);
     }
 
-    public Map<String, Object> login(Login loginRequest) {
-        Login loginEntity = loginRepository.findByLoginEmail(loginRequest.getLoginEmail())
+    public Map<String, Object> login(User userRequest) {
+        User userEntity = userRepository.findByUserEmail(userRequest.getUserEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Incorrect email / does not exist."));
 
-        boolean isMatch = passwordEncoder.matches(loginRequest.getLoginPassword(), loginEntity.getLoginPassword());
+        boolean isMatch = passwordEncoder.matches(userRequest.getUserPassword(), userEntity.getUserPassword());
         if (!isMatch) throw new IllegalArgumentException("Incorrect password");
-
-        // Devolvemos un Map en lugar del DTO que eliminaste
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Login successful");
-        response.put("idLogin", loginEntity.getIdLogin());
-        response.put("email", loginEntity.getLoginEmail());
-        response.put("userRole", loginEntity.getUserRole());
+        response.put("idUser", userEntity.getIdUser());
+        response.put("email", userEntity.getUserEmail());
+        response.put("handle", userEntity.getHandle());
+        response.put("status", userEntity.getUserStatus());
 
         return response;
     }

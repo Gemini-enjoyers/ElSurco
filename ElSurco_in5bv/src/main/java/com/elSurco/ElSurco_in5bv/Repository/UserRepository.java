@@ -1,7 +1,15 @@
 package com.elSurco.ElSurco_in5bv.Repository;
+
 import com.elSurco.ElSurco_in5bv.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> { }
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    boolean existsByUserEmail(String userEmail);
+
+    Optional<User> findByUserEmail(String userEmail);
+}

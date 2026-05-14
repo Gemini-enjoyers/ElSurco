@@ -16,39 +16,49 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAll() { return orderRepository.findAll(); }
+    public List<Order> getAll() {
+        return orderRepository.findAll();
+    }
 
     @Override
     public Order getById(Integer id) {
-        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order with wrong ID"));
+        return orderRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Order with ID " + id + " not found."));
     }
 
     @Override
     public Order create(Order order) {
-        order.setIdOrder(null);
+        order.setIdBuyOrder(null);
         return orderRepository.save(order);
     }
 
     @Override
     public Order update(Integer id, Order order) {
-        Order existingOrder = orderRepository.findById(id).orElse(null);
-        if (existingOrder != null) {
-            existingOrder.setOrderTotal(order.getOrderTotal());
-            existingOrder.setOrderQuantity(order.getOrderQuantity());
-            existingOrder.setOrderStatus(order.getOrderStatus());
-            existingOrder.setBuyer(order.getBuyer());
-            existingOrder.setProduct(order.getProduct());
-            return orderRepository.save(existingOrder);
-        }
-        return null;
+        Order existingOrder = getById(id);
+
+        // Actualizamos los campos
+        existingOrder.setOrderTotal(order.getOrderTotal());
+        existingOrder.setOrderQuantity(order.getOrderQuantity());
+        existingOrder.setOrderStatus(order.getOrderStatus());
+        existingOrder.setPaymentMethod(order.getPaymentMethod()); // Añadido de tu nueva BD
+
+        // CRÍTICO: Reemplazamos Buyer por User
+        existingOrder.setUser(order.getUser());
+        existingOrder.setProduct(order.getProduct());
+
+        return orderRepository.save(existingOrder);
     }
 
     @Override
-    public void delete(Integer id) { orderRepository.deleteById(id); }
+    public void delete(Integer id) {
+        Order existingOrder = getById(id);
+        orderRepository.delete(existingOrder);
+    }
 
+    // CRÍTICO: Cambiamos este método para que busque por User en lugar de Buyer
     @Override
-    public List<Order> getByBuyer(Integer idBuyer) {
-        return orderRepository.findByBuyer_IdBuyer(idBuyer);
+    public List<Order> getByUser(Integer idUser) {
+        return orderRepository.findByUser_IdUser(idUser);
     }
 
     @Override

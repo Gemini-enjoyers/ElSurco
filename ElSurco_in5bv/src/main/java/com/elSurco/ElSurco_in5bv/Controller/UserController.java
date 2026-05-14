@@ -1,5 +1,5 @@
 package com.elSurco.ElSurco_in5bv.Controller;
-import com.elSurco.ElSurco_in5bv.Entity.Buyer;
+import com.elSurco.ElSurco_in5bv.Entity.User;
 import com.elSurco.ElSurco_in5bv.Service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -8,24 +8,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/buyer")
-public class BuyerController {
+public class UserController {
     private final UserService userService;
 
-    public BuyerController(UserService userService) { this.userService = userService; }
+    public UserController(UserService userService) { this.userService = userService; }
 
     @GetMapping("/getAll")
-    public List<Buyer> getAll() { return userService.getAll(); }
+    public List<User> getAll() { return userService.getAll(); }
 
     @GetMapping("/{id}")
-    public Buyer getById(@PathVariable Integer id) { return userService.getById(id); }
+    public User getById(@PathVariable Integer id) { return userService.getById(id); }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Buyer create(@Valid @RequestBody Buyer buyer) { return userService.create(buyer); }
+    public User create(@Valid @RequestBody User user) { return userService.create(user); }
 
     @PutMapping("/update/{id}")
-    public Buyer update(@PathVariable("id") Integer id, @RequestBody Buyer buyer) {
-        return userService.update(id, buyer);
+    public User update(@PathVariable("id") Integer id, @RequestBody User user) {
+        return userService.update(id, user);
     }
 
     @DeleteMapping("/delete/{id}")

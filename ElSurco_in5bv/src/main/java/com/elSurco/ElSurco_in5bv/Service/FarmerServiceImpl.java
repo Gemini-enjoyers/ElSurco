@@ -17,48 +17,56 @@ public class FarmerServiceImpl implements FarmerService {
     }
 
     @Override
-    public List<Farmer> getAll() { return farmerRepository.findAll(); }
+    public List<Farmer> getAll() {
+        return farmerRepository.findAll();
+    }
 
     @Override
     public Farmer getById(Integer id) {
-        return farmerRepository.findById(id).orElseThrow(() -> new RuntimeException("Farmer with wrong ID"));
+        return farmerRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Farmer with ID " + id + " not found."));
     }
 
     @Override
     public Farmer create(Farmer farmer) {
         farmer.setIdFarmer(null);
+
         if (farmer.getFarmerAddress() != null && farmer.getFarmerGps() == null) {
             String coordinates = googleMapsService.getCoordinates(farmer.getFarmerAddress());
             farmer.setFarmerGps(coordinates);
         }
+
         return farmerRepository.save(farmer);
     }
 
     @Override
     public Farmer update(Integer id, Farmer farmer) {
-        Farmer existingFarmer = farmerRepository.findById(id).orElse(null);
-        if (existingFarmer != null){
-            existingFarmer.setFarmerName(farmer.getFarmerName());
-            existingFarmer.setFarmerLastName(farmer.getFarmerLastName());
-            existingFarmer.setFarmerIdCard(farmer.getFarmerIdCard());
-            existingFarmer.setFarmerPhone(farmer.getFarmerPhone());
-            existingFarmer.setFarmerAddress(farmer.getFarmerAddress());
+        Farmer existingFarmer = getById(id);
 
-            if(farmer.getFarmerGps() != null) {
-                existingFarmer.setFarmerGps(farmer.getFarmerGps());
-            } else {
-                String coordinates = googleMapsService.getCoordinates(farmer.getFarmerAddress());
-                existingFarmer.setFarmerGps(coordinates);
-            }
+        boolean addressChanged = !existingFarmer.getFarmerAddress().equals(farmer.getFarmerAddress());
 
-            existingFarmer.setFarmerStory(farmer.getFarmerStory());
-            existingFarmer.setLoginId(farmer.getLoginId());
+        existingFarmer.setFarmerFirstName(farmer.getFarmerFirstName());
+        existingFarmer.setFarmerLastName(farmer.getFarmerLastName());
+        existingFarmer.setFarmerDpi(farmer.getFarmerDpi());
+        existingFarmer.setFarmerPhone(farmer.getFarmerPhone());
+        existingFarmer.setFarmerAddress(farmer.getFarmerAddress());
+        existingFarmer.setFarmerHistory(farmer.getFarmerHistory());
 
-            return farmerRepository.save(existingFarmer);
+        if (farmer.getFarmerGps() != null) {
+            existingFarmer.setFarmerGps(farmer.getFarmerGps());
+        } else if (addressChanged) {
+            String coordinates = googleMapsService.getCoordinates(farmer.getFarmerAddress());
+            existingFarmer.setFarmerGps(coordinates);
         }
-        return null;
+
+        existingFarmer.setUser(farmer.getUser());
+
+        return farmerRepository.save(existingFarmer);
     }
 
     @Override
-    public void delete(Integer id) { farmerRepository.deleteById(id); }
+    public void delete(Integer id) {
+        Farmer existingFarmer = getById(id);
+        farmerRepository.delete(existingFarmer);
+    }
 }
