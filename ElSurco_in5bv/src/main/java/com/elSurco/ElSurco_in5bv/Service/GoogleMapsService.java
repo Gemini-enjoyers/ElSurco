@@ -12,22 +12,19 @@ public class GoogleMapsService {
     private final GeoApiContext context;
 
     public GoogleMapsService(@Value("${google.maps.api-key}") String apiKey) {
-        this.context = new GeoApiContext.Builder()
-                .apiKey(apiKey)
-                .build();
+        this.context = new GeoApiContext.Builder().apiKey(apiKey).build();
     }
 
-    public String obtenerCoordenadas(String direccion) {
+    public String getCoordinates(String address) {
         try {
-            GeocodingResult[] results = GeocodingApi.geocode(context, direccion).await();
-
+            GeocodingResult[] results = GeocodingApi.geocode(context, address).await();
             if (results.length > 0) {
                 double lat = results[0].geometry.location.lat;
                 double lng = results[0].geometry.location.lng;
                 return lat + "," + lng;
             }
         } catch (Exception e) {
-            System.out.println("No se pudo obtener el GPS de Google Maps: " + e.getMessage());
+            System.out.println("Could not get GPS from Google Maps: " + e.getMessage());
         }
         return null;
     }

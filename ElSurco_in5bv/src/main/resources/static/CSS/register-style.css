@@ -1,0 +1,122 @@
+/* Reutilizamos la base del login pero con ajustes para más campos */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfaf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Cambiado a min-height por si el contenido crece */
+}
+
+.register-wrapper {
+    display: flex;
+    width: 1050px; /* Un poco más ancho para la cuadrícula */
+    height: 750px; /* Más alto para acomodar todos los campos */
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.form-side {
+    width: 55%; /* Le damos un poco más de espacio al formulario */
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.title {
+    color: #2b1c4d;
+    margin: 0 0 5px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #6c757d;
+    margin: 0 0 30px 0;
+    font-size: 14px;
+}
+
+/* Cuadrícula para organizar los campos en dos columnas */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+/* Para que la dirección ocupe las dos columnas */
+.full-width {
+    grid-column: span 2;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #a0a0a0;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #1c6b56;
+    border-width: 2px;
+    padding: 9px 11px;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #1c6b56;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #145040;
+}
+
+.login-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.login-text a {
+    color: #2b1c4d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.image-side {
+    width: 45%;
+    background-color: #e9ecef;
+    background-size: cover;
+    background-position: center;
+}
