@@ -1,0 +1,124 @@
+/* Estilos generales del cuerpo */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfaf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal de la tarjeta */
+.login-wrapper {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Mitad izquierda (Formulario) */
+.form-side {
+    width: 50%;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Títulos */
+.title {
+    color: #2b1c4d;
+    margin: 0 0 5px 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #6c757d;
+    margin: 0 0 40px 0;
+    font-size: 14px;
+}
+
+/* Estilos de los campos de entrada */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #a0a0a0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #1c6b56;
+    border-width: 2px;
+    padding: 11px 14px;
+}
+
+/* Botón de Login */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #1c6b56;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.login-btn:hover {
+    background-color: #145040;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Texto de Crear Cuenta */
+.create-account-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.create-account-text a {
+    color: #2b1c4d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.create-account-text a:hover {
+    text-decoration: underline;
+}
+
+/* Mitad derecha (Imagen) */
+.image-side {
+    width: 50%;
+    background-color: #e9ecef; /* Espacio en blanco/gris para la imagen */
+    background-size: cover;
+    background-position: center;
+}
