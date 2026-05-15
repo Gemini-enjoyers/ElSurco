@@ -1,51 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>El Surco</title>
+    <title>Detalle de Producto</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Encabezado-->
-<header>
-    <h1>El Surco</h1>
 
-    <!-- Menù-->
-    <nav>
-        <a href="#">¿Quiénes somos?</a>
-        <a href="#">Tienda</a>
-        <a href="#">Contacto</a>
-        <a href="#">Únete a nuestro equipo</a>
-    </nav>
-</header>
-
-<hr>
-<main>
-    <section>
-        <h2>¿Quienes somos?</h2>
-        <!-- Aqui esta para que pongas algo xic -->
-        <div>
-
+<div class="container">
+    <div class="product-main">
+        <div class="product-image">
+            <img src="https://via.placeholder.com/400" alt="Caja de Tomates">
         </div>
-    </section>
 
+        <div class="product-info">
+            <h1>Caja de Tomates Manzano - Primera Calidad</h1>
 
+            <div class="price-box">
+                <div class="price-normal">
+                    <span>Precio normal</span>
+                    <h3>Q120.00</h3>
+                </div>
 
+            </div>
 
+            <div class="action-buttons">
+                <button class="btn-buy">🛒 ¡Añadir al carrito!</button>
+            </div>
 
+            <div class="meta-info">
+                <p>✔️ Recién cosechado</p>
+                <p>📦 Stock: 50 cajas disponibles</p>
+                <p>🏷️ Categoría: Vegetales</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="recommended-section">
+        <h2>Productos recomendados</h2>
 
+        <div class="product-carousel">
+            <a href="/producto/2" class="carousel-card">
+                <img src="https://via.placeholder.com/100" alt="Cebolla">
+                <p>Costal de Cebolla Blanca</p>
+            </a>
 
+            <a href="/producto/3" class="carousel-card">
+                <img src="https://via.placeholder.com/100" alt="Zanahoria">
+                <p>Zanahoria por quintal</p>
+            </a>
 
-
-
-
-    <section>
-        <h2>Nuestro objetivo:</h2>
-        <!-- Aqui esta para que pongas algo xic -->
-        <p></p>
-    </section>
-
-</main>
+            <a href="/producto/4" class="carousel-card">
+                <img src="https://via.placeholder.com/100" alt="Papa">
+                <p>Papa Loman lavada</p>
+            </a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

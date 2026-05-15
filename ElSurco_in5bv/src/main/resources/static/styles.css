@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Arriba: Foto y Detalles */
+.product-main {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Caja de Precios */
+.price-box {
+    display: flex;
+    background: #fdfdfd;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    gap: 40px;
+}
+
+.price-discount h3 {
+    color: #ff6b00; /* Naranja estilo oferta */
+    font-size: 28px;
+    margin: 5px 0 0 0;
+}
+
+.price-normal h3 {
+    color: #555;
+    font-size: 24px;
+    margin: 5px 0 0 0;
+}
+
+/* Botones */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-buy {
+    background: #ff6b00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-fav {
+    background: #e0f2f1;
+    color: #00796b;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Sección de abajo: Recomendados */
+.recommended-section {
+    border-top: 1px solid #eaeaea;
+    padding-top: 30px;
+}
+
+.product-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permite hacer scroll horizontal si hay muchos */
+    padding-bottom: 10px;
+}
+
+.carousel-card {
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    min-width: 150px;
+    transition: transform 0.2s;
+}
+
+.carousel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
