@@ -1,0 +1,475 @@
+
+/* ===================================================
+   Actualización de la Top Bar de la Tienda
+   =================================================== */
+
+/* Contenedor Principal de la Cabecera */
+.shop-header {
+    background-color: var(--color-verde-oscuro); /* El color de fondo profundo de tu imagen */
+    padding: 0.8rem 5%; /* Un padding lateral más amplio para espaciado */
+    display: flex;
+    justify-content: space-between; /* Espacia el logo a la izq y el carrito a la der */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Una sombra sutil para profundidad */
+}
+
+/* Grupo Izquierdo: Logo + Botón */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espacio generoso entre el logo y el botón, similar a tu referencia */
+}
+
+/* Estilo del Logotipo "El Surco" */
+.header-logo {
+    font-size: 1.8rem; /* Grande y claro */
+    color: var(--color-blanco); /* Texto blanco puro */
+    font-weight: 700; /* Atrevido (bold) */
+    text-decoration: none; /* Sin subrayado */
+    letter-spacing: -0.5px; /* Un toque de estilo */
+}
+
+/* Botón de Categorías Refinado */
+.btn-categories-toggle {
+    background-color: transparent; /* Fondo transparente por defecto */
+    color: var(--color-blanco); /* Texto blanco */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Un borde sutil */
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover: se vuelve como el botón de "Ir a la Tienda" de tu imagen */
+.btn-categories-toggle:hover {
+    background-color: var(--color-verde-claro); /* Fondo pistacho */
+    color: var(--color-verde-oscuro); /* Texto oscuro */
+    border-color: var(--color-verde-claro);
+}
+
+.btn-categories-toggle:active {
+    transform: scale(0.98);
+}
+
+/* Grupo Derecho: Carrito */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Carrito integrado (Canasta) */
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background-color: rgba(255, 255, 255, 0.1); /* Semitransparente, elegante */
+    color: var(--color-blanco);
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px; /* Bordes redondeados */
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Un toque más visible */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cart-button:active {
+    transform: scale(0.98);
+}
+
+/* Contador de Productos de la Canasta */
+.cart-count {
+    background-color: var(--color-verde-claro); /* Fondo pistacho */
+    color: var(--color-verde-oscuro); /* Texto oscuro */
+    font-weight: bold;
+    padding: 0.15rem 0.6rem;
+    border-radius: 50%; /* Círculo perfecto */
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+/* Botón de Categorías (Colapsable) */
+.btn-categories-toggle {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-categories-toggle:hover {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+}
+
+.btn-categories-toggle:active {
+    transform: scale(0.98);
+}
+
+/* Carrito integrado */
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-blanco);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cart-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cart-count {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    font-weight: bold;
+    padding: 0.1rem 0.6rem;
+    border-radius: 50%;
+    font-size: 0.85rem;
+}
+
+/* Layout del cuerpo de la tienda */
+.shop-layout {
+    display: flex;
+    min-height: calc(100vh - 65px);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Sidebar Estilo Menú Izquierdo */
+.sidebar {
+    width: 260px;
+    background-color: var(--color-blanco);
+    border-right: 1px solid #E5E7EB;
+    padding: 1.5rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+/* Estado oculto/colapsado del Sidebar */
+.sidebar.collapsed {
+    margin-left: -260px;
+    transform: translateX(-100%);
+}
+
+.sidebar h3 {
+    font-size: 1.4rem;
+    color: var(--color-verde-oscuro);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-fondo);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #4B5563; /* Gris intermedio para legibilidad */
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-verde-medio);
+}
+
+/* Categoría activa (Usa 10% de opacidad del verde pistacho de fondo) */
+.sidebar-nav a.active {
+    background-color: rgba(167, 201, 87, 0.15);
+    color: var(--color-verde-medio);
+    border-left: 4px solid var(--color-verde-claro);
+    font-weight: 600;
+}
+/* aca termina el header
+/* ===================================================
+   VARIABLES DE DISEÑO UNIFICADAS
+   =================================================== */
+:root {
+    --color-fondo: #F9FBF7;        /* Crema orgánico de Agrofresh y El Surco */
+    --color-verde-claro: #A7C957;  /* Verde pistacho llamativo */
+    --color-verde-medio: #6A994E;  /* Verde hoja para botones y activos */
+    --color-verde-oscuro: #1E362D; /* El verde bosque profundo de tu Top Bar */
+    --color-blanco: #FFFFFF;
+    --color-texto-principal: #1A2E26;
+    --color-texto-mutado: #6B7280;
+    --border-suave: #E6EDE0;       /* Borde sutil verdoso/crema */
+}
+
+/* ===================================================
+   ESTILOS DEL LAYOUT Y SIDEBAR
+   =================================================== */
+.shop-layout {
+    display: flex;
+    min-height: calc(100vh - 65px);
+    background-color: var(--color-fondo);
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--color-blanco);
+    border-right: 1px solid var(--border-suave);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+/* Estado oculto/colapsado solicitado */
+.sidebar.collapsed {
+    margin-left: -260px;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Títulos de sección pequeños y verdes como en Agrofresh */
+.sidebar-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-verde-claro);
+    letter-spacing: 0.05em;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: var(--color-texto-principal);
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-verde-medio);
+}
+
+/* Categoría activa refinada (Estilo Agrofresh con toque El Surco) */
+.sidebar-nav a.active {
+    background-color: var(--color-fondo);
+    color: var(--color-verde-medio);
+    font-weight: 700;
+}
+
+/* ===================================================
+   CONTENEDOR PRINCIPAL Y ENCABEZADO
+   =================================================== */
+.products-container {
+    flex-grow: 1;
+    padding: 2.5rem;
+}
+
+/* Letras y subtítulo del catálogo (Inspirado en Imagen 1) */
+.store-welcome {
+    margin-bottom: 2rem;
+}
+
+.store-welcome h1 {
+    font-size: 2.2rem;
+    color: var(--color-verde-oscuro);
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.store-welcome p {
+    font-size: 1rem;
+    color: var(--color-verde-medio);
+    font-weight: 600;
+}
+
+/* Grid responsivo */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.75rem;
+}
+
+/* ===================================================
+   DISEÑO DE TARJETAS (EL MASHUP PERFECTO)
+   =================================================== */
+.product-card {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--border-suave);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(106, 153, 78, 0.08); /* Sombra con tono verde de la marca */
+}
+
+/* Contenedor flotante de insignias y compartir */
+.card-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+/* Badge EN STOCK de la imagen 1 */
+.badge-stock {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+}
+
+/* Botón compartir minimalista de la imagen 2 */
+.btn-share {
+    background-color: var(--color-verde-claro);
+    color: var(--color-blanco);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-share:hover {
+    background-color: var(--color-verde-medio);
+}
+
+/* Contenedor de la Imagen */
+.product-image {
+    height: 180px;
+    background-color: var(--color-blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    padding-top: 2.5rem; /* Espacio para que las insignias no tapen la foto */
+}
+
+.product-image img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Evita que las verduras reales se deformen */
+}
+
+/* Información inferior */
+.product-info {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-top: 1px solid var(--color-fondo);
+}
+
+.product-title {
+    font-size: 1.05rem;
+    color: var(--color-verde-oscuro);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.product-unit {
+    font-size: 0.8rem;
+    color: var(--color-texto-mutado);
+}
+
+/* Alineación de precio y botón más (+) */
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.6rem;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    color: var(--color-verde-oscuro);
+    font-weight: 800;
+}
+
+/* Botón añadir circular perfecto */
+.btn-add-cart {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-add-cart:hover {
+    background-color: var(--color-verde-oscuro);
+    transform: scale(1.05);
+}
+
+/* ===================================================
+   RESPONSIVIDAD MÓVIL
+   =================================================== */
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        left: 0;
+        top: 65px;
+        height: calc(100vh - 65px);
+        z-index: 999;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+    }
+    .products-container {
+        padding: 1.5rem;
+    }
+}
