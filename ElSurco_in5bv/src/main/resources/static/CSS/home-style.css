@@ -1,0 +1,384 @@
+/* =========================================
+   Variables de Paleta de Colores
+   ========================================= */
+:root {
+    --color-fondo: #F9FBF7;       /* Crema muy claro */
+    --color-verde-claro: #A7C957; /* Verde pistacho */
+    --color-verde-medio: #6A994E; /* Verde hoja */
+    --color-verde-oscuro: #1E362D;/* Verde bosque muy oscuro */
+    --color-blanco: #FFFFFF;
+}
+
+/* =========================================
+   Reset y Estilos Generales
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-verde-oscuro);
+    line-height: 1.6;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    color: var(--color-verde-oscuro);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-verde-medio);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+/* =========================================
+   Header & Navbar
+   ========================================= */
+header {
+    background-color: var(--color-verde-oscuro);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    color: var(--color-fondo);
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--color-fondo);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:not(.btn-nav-tienda):hover {
+    color: var(--color-verde-claro);
+}
+
+/* Enlace de la Tienda convertido en Botón Destacado */
+nav .btn-nav-tienda {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+nav .btn-nav-tienda:hover {
+    background-color: var(--color-blanco);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   Hero Section (Presentación principal)
+   ========================================= */
+.hero {
+    /* Gradiente oscuro encima de una imagen representativa del campo */
+    background: linear-gradient(rgba(30, 54, 45, 0.85), rgba(30, 54, 45, 0.85)),
+                url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200') center/cover no-repeat;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    color: var(--color-blanco);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: var(--color-verde-claro);
+}
+
+.hero-content p {
+    color: #E2E8F0;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(167, 201, 87, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-blanco);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   Contenido Principal (Pilares)
+   ========================================= */
+main {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.pillars-section {
+    margin-bottom: 5rem;
+}
+
+.pillars-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pillar-card {
+    background-color: var(--color-blanco);
+    flex: 1;
+    min-width: 280px;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(30, 54, 45, 0.04);
+    border-top: 5px solid var(--color-verde-claro);
+    transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+}
+
+.pillar-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.pillar-card h3 {
+    margin-bottom: 1rem;
+    color: var(--color-verde-oscuro);
+}
+
+/* =========================================
+   Sección Problema vs Solución
+   ========================================= */
+.impact-section {
+    margin-bottom: 5rem;
+}
+
+.impact-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.impact-block {
+    flex: 1;
+    min-width: 300px;
+    padding: 3rem;
+    border-radius: 15px;
+}
+
+/* Bloque Rojo Suave para el Problema tradicional */
+.impact-block.problem {
+    background-color: #FFF2F2;
+    border-left: 6px solid #E74C3C;
+}
+
+.impact-block.problem h3 {
+    color: #C0392B;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Bloque Verde para tu propuesta de valor */
+.impact-block.solution {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    border-left: 6px solid var(--color-verde-claro);
+    box-shadow: 0 8px 25px rgba(106, 153, 78, 0.2);
+}
+
+.impact-block.solution h3 {
+    color: var(--color-blanco);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.impact-block ul {
+    list-style-type: none;
+}
+
+.impact-block ul li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.impact-block.problem ul li::before {
+    content: "•";
+    color: #E74C3C;
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.impact-block.solution ul li::before {
+    content: "✓";
+    color: var(--color-verde-claro);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* =========================================
+   Avance de Productos (Círculos Minimalistas)
+   ========================================= */
+.catalog-preview {
+    margin-bottom: 2rem;
+}
+
+.categories-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.category-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.category-item:hover {
+    transform: scale(1.08);
+}
+
+.category-circle {
+    width: 110px;
+    height: 110px;
+    background-color: var(--color-blanco);
+    border: 3px solid var(--color-verde-claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(106, 153, 78, 0.08);
+}
+
+.category-item h4 {
+    font-size: 1.2rem;
+    color: var(--color-verde-oscuro);
+    font-weight: 600;
+}
+
+/* =========================================
+   CTA Final (Cierre de página)
+   ========================================= */
+.cta-final {
+    background-color: var(--color-verde-oscuro);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.cta-final h2 {
+    color: var(--color-blanco);
+    margin-bottom: 1rem;
+}
+
+.cta-final p {
+    color: #CBD5E1;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    text-decoration: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-fondo);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   Responsividad Móvil
+   ========================================= */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .impact-container, .pillars-container {
+        flex-direction: column;
+    }
+}

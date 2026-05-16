@@ -2,51 +2,104 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>El Surco</title>
-    <link rel="stylesheet" th:href="@{/css/register-style.css}">
+    <title>El Surco - Bienvenidos</title>
+    <link rel="stylesheet" th:href="@{/css/home-style.css}">
 </head>
 <body>
-<!-- Encabezado-->
-<header>
-    <h1>El Surco</h1>
 
-    <!-- Menù-->
+<header>
+    <div class="logo">El Surco</div>
     <nav>
-        <a href="#">¿Quiénes somos?</a>
-        <a href="#">Tienda</a>
-        <a href="#">Contacto</a>
-        <a href="#">Únete a nuestro equipo</a>
+        <a href="#quienes-somos">¿Quiénes somos?</a>
+        <a href="#impacto">Nuestro Impacto</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#" class="btn-nav-tienda">Ir a la Tienda</a>
     </nav>
 </header>
 
-<hr>
-<main>
-    <section>
-        <h2>¿Quienes somos?</h2>
-        <!-- Aqui esta para que pongas algo xic -->
-        <div>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Del campo a tu negocio, <br><span>sin intermediarios abusivos</span></h1>
+        <p>Conectamos directamente a los agricultores locales con los vendedores comerciales. Alimentos más frescos, precios reales y un comercio 100% justo.</p>
+        <a href="#" class="btn-primary">Explorar la Tienda</a>
+    </div>
+</section>
 
+<main>
+    <section id="quienes-somos" class="pillars-section">
+        <h2>¿Quiénes somos?</h2>
+        <p class="section-subtitle">Un puente directo que transforma por completo la cadena de suministro agrícola.</p>
+
+        <div class="pillars-container">
+            <div class="pillar-card">
+                <div class="pillar-icon">🌱</div>
+                <h3>Origen Justo</h3>
+                <p>Trabajamos de la mano con productores locales, asegurando que reciban el pago digno que merece su arduo esfuerzo.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🤝</div>
+                <h3>Sin Abusos</h3>
+                <p>Eliminamos las largas cadenas de intermediación tradicionales que inflan los precios finales y castigan al productor.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">🚛</div>
+                <h3>Calidad Directa</h3>
+                <p>Los alimentos no pasan semanas acumulando días en bodegas. Van de la tierra a tu negocio garantizando máxima frescura.</p>
+            </div>
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-    <section>
-        <h2>Nuestro objetivo:</h2>
-        <!-- Aqui esta para que pongas algo xic -->
-        <p></p>
+    <section id="impacto" class="impact-section">
+        <div class="impact-container">
+            <div class="impact-block problem">
+                <h3>El Canal Tradicional ❌</h3>
+                <ul>
+                    <li>Intermediarios fijan precios excesivamente bajos al agricultor.</li>
+                    <li>El producto pasa por demasiadas manos perdiendo su frescura ideal.</li>
+                    <li>El comprador final paga un costo inflado e injustificado.</li>
+                </ul>
+            </div>
+            <div class="impact-block solution">
+                <h3>El Efecto El Surco ✨</h3>
+                <ul>
+                    <li>Trato directo, transparente y humano con las comunidades agrícolas.</li>
+                    <li>Logística optimizada al máximo: de la cosecha a tus manos.</li>
+                    <li>Ahorro real para tu negocio y ganancias merecidas para el campo.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
+    <section class="catalog-preview">
+        <h2>¿Qué encontrarás en nuestra tienda?</h2>
+        <p class="section-subtitle">Alimentos sanos cosechados con dedicación, listos para abastecer tu negocio de inmediato.</p>
+
+        <div class="categories-grid">
+            <div class="category-item">
+                <div class="category-circle">🥦</div>
+                <h4>Vegetales</h4>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">🍎</div>
+                <h4>Frutas</h4>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">🥔</div>
+                <h4>Tubérculos</h4>
+            </div>
+            <div class="category-item">
+                <div class="category-circle">🌻</div>
+                <h4>Semillas</h4>
+            </div>
+        </div>
+    </section>
 </main>
+
+<section class="cta-final">
+    <h2>¿Listo para abastecer tu negocio con impacto real?</h2>
+    <p>Únete al cambio, apoya la economía local del campo y accede a los precios más competitivos y transparentes del mercado.</p>
+    <a href="#" class="btn-secondary">Entrar a la Tienda</a>
+</section>
 
 </body>
 </html>
