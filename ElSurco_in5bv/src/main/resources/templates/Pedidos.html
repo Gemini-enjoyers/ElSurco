@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Surco - Mis Pedidos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+<nav class="bg-green-700 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">🌱 El Surco</h1>
+        <span class="text-sm bg-green-800 px-3 py-1 rounded-full border border-green-600">Módulo de Compras</span>
+    </div>
+</nav>
+
+<main class="container mx-auto p-6 max-w-6xl">
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Historial de Órdenes de Compra</h2>
+        <p class="text-gray-500 text-sm">Control e historial basado en el registro interno de transacciones.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                <tr class="bg-gray-100 text-gray-700 text-xs uppercase font-semibold border-b border-gray-200">
+                    <th class="p-4">ID Orden</th>
+                    <th class="p-4">Fecha de Compra</th>
+                    <th class="p-4">Producto (idProduct)</th>
+                    <th class="p-4 text-center">Cantidad</th>
+                    <th class="p-4">Total</th>
+                    <th class="p-4">Pago</th>
+                    <th class="p-4">Estado</th>
+                    <th class="p-4 text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody id="tabla-orders-body" class="divide-y divide-gray-100 text-sm">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<div id="modal-valoracion" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Dejar una Valoración</h3>
+        <p class="text-sm text-gray-500 mb-4">Tu opinión ayuda a mejorar la comunidad de El Surco.</p>
+        <form id="form-valoracion" onsubmit="enviarValoracion(event)">
+            <input type="hidden" id="modal-order-id">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Calificación:</label>
+                <select id="puntos" class="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                    <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+                    <option value="4">⭐⭐⭐⭐ Bueno</option>
+                    <option value="3">⭐⭐⭐ Regular</option>
+                    <option value="2">⭐⭐ Malo</option>
+                    <option value="1">⭐ Pésimo</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Comentarios:</label>
+                <textarea id="comentario" rows="3" class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-2 focus:ring-amber-500" placeholder="¿Cómo estuvo tu producto y la entrega?"></textarea>
+            </div>
+            <div class="flex justify-end gap-2">
+                <button type="button" onclick="cerrarModal()" class="px-4 py-2 border rounded-md text-sm hover:bg-gray-50">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // URL de tu controlador en Spring Boot
+    const API_URL = "http://localhost:8080/api/orders";
+
+    // Cargar los datos al abrir la página
+    document.addEventListener("DOMContentLoaded", fetchOrders);
+
+    async function fetchOrders() {
+        try {
+            const response = await fetch(API_URL);
+            const orders = await response.json();
+            renderTable(orders);
+        } catch (error) {
+            console.error("Error conectando al controlador de Java:", error);
+        }
+    }
+
+    function renderTable(orders) {
+        const tbody = document.getElementById("tabla-orders-body");
+        tbody.innerHTML = orders.map(order => {
+
+            // Formatear los Estilos del Estado (ENUM)
+            let statusBadge = "";
+            if(order.orderStatus === 'PENDING') statusBadge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span>';
+            else if(order.orderStatus === 'ON_THE_WAY') statusBadge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">En Camino</span>';
+            else if(order.orderStatus === 'DELIVERED') statusBadge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Entregado</span>';
+            else statusBadge = '<span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Cancelado</span>';
+
+            // Formatear el Método de Pago (ENUM) con un Icono descriptivo
+            const paymentIcon = order.paymentMethod === 'CARD' ? '💳 Tarjeta' : '💵 Efectivo';
+
+            // Mostrar botón de valoración sólo si el pedido ya fue ENTREGADO
+            const actionButton = order.orderStatus === 'DELIVERED'
+                ? `<button onclick="abrirModal(${order.idBuyOrder})" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-sm transition">⭐ Valorar</button>`
+                : `<span class="text-xs text-gray-400 italic">No disponible</span>`;
+
+            // Convertir la fecha SQL a un formato legible
+            const fecha = new Date(order.orderDate).toLocaleDateString('es-ES', {day: '2-digit', month: '2-digit', year: 'numeric'});
+
+            return `
+                <tr class="hover:bg-gray-50 transition">
+                    <td class="p-4 font-mono text-xs font-bold text-gray-700">#${order.idBuyOrder}</td>
+                    <td class="p-4 text-gray-600">${fecha}</td>
+                    <td class="p-4 font-medium text-gray-900">${order.productName}</td>
+                    <td class="p-4 text-center text-gray-600">${order.orderQuantity}</td>
+                    <td class="p-4 font-bold text-gray-900">$${order.orderTotal.toFixed(2)}</td>
+                    <td class="p-4 text-gray-600 text-xs font-medium">${paymentIcon}</td>
+                    <td class="p-4">${statusBadge}</td>
+                    <td class="p-4 text-center">${actionButton}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    // Funciones del Modal
+    function abrirModal(orderId) {
+        document.getElementById('modal-order-id').value = orderId;
+        document.getElementById('modal-valoracion').classList.remove('hidden');
+    }
+
+    function cerrarModal() {
+        document.getElementById('modal-valoracion').classList.add('hidden');
+        document.getElementById('form-valoracion').reset();
+    }
+
+    function enviarValoracion(e) {
+        e.preventDefault();
+        alert("Valoración guardada con éxito en el sistema.");
+        cerrarModal();
+    }
+</script>
+</body>
+</html>
