@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos - Panel del Agricultor</title>
+</head>
+<body>
+
+<!-- Menú de Navegación del Panel -->
+<nav>
+    <ul>
+        <li><a href="#">Mis Productos</a></li>
+        <li><a href="#">Perfil Agricultor</a></li>
+        <li><a href="#">Ventas</a></li>
+    </ul>
+</nav>
+
+<main>
+    <!-- Encabezado Principal -->
+    <header>
+        <h1>Mis Productos</h1>
+        <p>Gestiona el inventario de tu cosecha (ID Agricultor: #102)</p>
+        <a href="#formulario-producto">Ir al Formulario / Agregar Producto</a>
+    </header>
+
+    <hr>
+
+    <!-- Sección de la Tabla de Productos -->
+    <section>
+        <h2>Listado de Productos Existentes</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Fecha Cosecha</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Ejemplo de Producto 1 -->
+            <tr>
+                <td>1</td>
+                <td>Tomate Manzano</td>
+                <td>Tomates rojos, frescos y listos para ensalada.</td>
+                <td>VEGETABLES</td>
+                <td>$2.50</td>
+                <td>120 u</td>
+                <td>2026-05-10</td>
+                <td>AVAILABLE</td>
+                <td>
+                    <button type="button">Editar</button>
+                    <button type="button">Eliminar</button>
+                </td>
+            </tr>
+            <!-- Ejemplo de Producto 2 -->
+            <tr>
+                <td>2</td>
+                <td>Fresas Orgánicas</td>
+                <td>Fresas dulces cultivadas sin pesticidas.</td>
+                <td>FRUITS</td>
+                <td>$4.00</td>
+                <td>0 u</td>
+                <td>2026-05-12</td>
+                <td>OUT_OF_STOCK</td>
+                <td>
+                    <button type="button">Editar</button>
+                    <button type="button">Eliminar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- Sección del Formulario (Agregar / Editar) -->
+    <section id="formulario-producto">
+        <h2>Formulario de Producto (Nuevo / Edición)</h2>
+        <form action="#" method="POST">
+            <!-- idFarmer: Se envía oculto ya que pertenece a la sesión del agricultor logueado -->
+            <input type="hidden" name="idFarmer" value="102">
+
+            <div>
+                <label for="productName">Nombre del Producto *:</label>
+                <input type="text" id="productName" name="productName" maxlength="100" required placeholder="Ej. Papa Llama">
+            </div>
+
+            <div>
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" name="productDescription" maxlength="200" rows="3" placeholder="Breve descripción del estado o variedad..."></textarea>
+            </div>
+
+            <div>
+                <label for="productPrice">Precio ($) *:</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" required placeholder="0.00">
+            </div>
+
+            <div>
+                <label for="productStock">Stock (Cantidad) *:</label>
+                <input type="number" id="productStock" name="productStock" required placeholder="0">
+            </div>
+
+            <div>
+                <label for="productCategory">Categoría *:</label>
+                <select id="productCategory" name="productCategory" required>
+                    <option value="">-- Selecciona una categoría --</option>
+                    <option value="FRUITS">FRUITS</option>
+                    <option value="VEGETABLES">VEGETABLES</option>
+                    <option value="GRAINS">GRAINS</option>
+                    <option value="TUBERS">TUBERS</option>
+                    <option value="DAIRY">DAIRY</option>
+                    <option value="OTHERS">OTHERS</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="harvestDate">Fecha de Cosecha *:</label>
+                <input type="date" id="harvestDate" name="harvestDate" required>
+            </div>
+
+            <div>
+                <label for="productStatus">Estado del Producto:</label>
+                <select id="productStatus" name="productStatus">
+                    <option value="AVAILABLE" selected>AVAILABLE (Disponible)</option>
+                    <option value="OUT_OF_STOCK">OUT_OF_STOCK (Agotado)</option>
+                    <option value="HIDDEN">HIDDEN (Oculto)</option>
+                </select>
+            </div>
+
+            <div>
+                <button type="reset">Limpiar Formulario</button>
+                <button type="submit">Guardar Producto</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+</body>
+</html>
