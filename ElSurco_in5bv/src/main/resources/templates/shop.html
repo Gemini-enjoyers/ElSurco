@@ -12,15 +12,23 @@
         <button class="btn-categories-toggle" id="categories-toggle-btn">
             Categorías
         </button>
-
-        <a href="#" class="header-logo">El Surco</a>
+        <a th:href="@{/home}" class="header-logo">El Surco</a>
     </div>
+
     <div class="header-right">
-        <a href="#" class="cart-button">
-            🛒 Canasta <span class="cart-count">3</span>
+        <a th:href="@{/shop/cart}" class="cart-symbol-button" title="Ver canasta de compras">
+            🛒<span id="contador-carrito" class="badge-carrito-contador">0</span>
         </a>
+
+        <div class="account-top-nav">
+            <a href="#" class="account-top-link">📋 Mis Pedidos</a>
+            <a href="#" class="account-top-link">⭐ Favoritos</a>
+        </div>
     </div>
 </header>
+
+<span th:if="${#authorization.expression('isAuthenticated()')}" id="username-holder" th:data-username="${#authentication.name}" style="display:none;"></span>
+<span th:if="${!#authorization.expression('isAuthenticated()')}" id="username-holder" data-username="invitado" style="display:none;"></span>
 
 <div class="shop-layout">
 
@@ -28,27 +36,18 @@
         <div class="sidebar-section">
             <span class="sidebar-section-title">CATEGORÍAS</span>
             <nav class="sidebar-nav">
-                <a th:href="@{/shop}" th:classappend="${categoriaActiva == 'TODOS'} ? 'active' : ''">🌟 Todos</a>
-                <a th:href="@{/shop(categoria='VEGETABLES')}" th:classappend="${categoriaActiva == 'VEGETABLES'} ? 'active' : ''">🥦 Verdura</a>
-                <a th:href="@{/shop(categoria='FRUITS')}" th:classappend="${categoriaActiva == 'FRUITS'} ? 'active' : ''">🍎 Fruta</a>
-                <a th:href="@{/shop(categoria='GRAINS')}" th:classappend="${categoriaActiva == 'GRAINS'} ? 'active' : ''">🌾 Granos</a>
-                <a th:href="@{/shop(categoria='TUBERS')}" th:classappend="${categoriaActiva == 'TUBERS'} ? 'active' : ''">🥔 Tubérculos</a>
-                <a th:href="@{/shop(categoria='DAIRY')}" th:classappend="${categoriaActiva == 'DAIRY'} ? 'active' : ''">🥛 Lácteos</a>
-                <a th:href="@{/shop(categoria='OTHERS')}" th:classappend="${categoriaActiva == 'OTHERS'} ? 'active' : ''">📦 Otros</a>
-            </nav>
-        </div>
-
-        <div class="sidebar-section">
-            <span class="sidebar-section-title">MI CUENTA</span>
-            <nav class="sidebar-nav">
-                <a href="#">📋 Pedidos</a>
-                <a href="#">⭐ Favoritos</a>
+                <a th:href="@{/shop}" th:classappend="${categoriaActiva == 'TODOS'} ? 'active' : ''">Todos</a>
+                <a th:href="@{/shop(categoria='VEGETABLES')}" th:classappend="${categoriaActiva == 'VEGETABLES'} ? 'active' : ''">Verduras</a>
+                <a th:href="@{/shop(categoria='FRUITS')}" th:classappend="${categoriaActiva == 'FRUITS'} ? 'active' : ''">Frutas</a>
+                <a th:href="@{/shop(categoria='GRAINS')}" th:classappend="${categoriaActiva == 'GRAINS'} ? 'active' : ''">Granos</a>
+                <a th:href="@{/shop(categoria='TUBERS')}" th:classappend="${categoriaActiva == 'TUBERS'} ? 'active' : ''">Tubérculos</a>
+                <a th:href="@{/shop(categoria='DAIRY')}" th:classappend="${categoriaActiva == 'DAIRY'} ? 'active' : ''">Lácteos</a>
+                <a th:href="@{/shop(categoria='OTHERS')}" th:classappend="${categoriaActiva == 'OTHERS'} ? 'active' : ''">Otros</a>
             </nav>
         </div>
     </aside>
 
     <main class="products-container">
-
         <div class="products-grid">
             <div class="product-card" th:each="producto : ${productos}">
                 <div class="card-badges">
@@ -68,7 +67,16 @@
 
                     <div class="product-footer">
                         <span class="product-price" th:text="'Q' + ${producto.productPrice}">Q0.00</span>
-                        <button class="btn-add-cart" th:disabled="${#strings.toString(producto.productStatus) == 'OUT_OF_STOCK'}">+</button>
+
+                        <button class="btn-add-cart"
+                                th:disabled="${#strings.toString(producto.productStatus) == 'OUT_OF_STOCK'}"
+                                th:data-id="${producto.idProduct}"
+                                th:data-name="${producto.productName}"
+                                th:data-description="${producto.productDescription}"
+                                th:data-price="${producto.productPrice}"
+                                onclick="capturarYAgregar(this)">
+                            +
+                        </button>
                     </div>
                 </div>
             </div>
@@ -76,7 +84,6 @@
             <div th:if="${#lists.isEmpty(productos)}" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
                 <h3 style="color: var(--color-verde-oscuro);">Aún no hay productos en esta categoría 👨‍🌾</h3>
             </div>
-
         </div>
     </main>
 </div>

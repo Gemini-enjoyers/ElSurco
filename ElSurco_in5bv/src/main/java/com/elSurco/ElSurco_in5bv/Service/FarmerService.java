@@ -8,4 +8,5 @@ public interface FarmerService {
     Farmer create(Farmer farmer);
     Farmer update(Integer id, Farmer farmer);
     void delete(Integer id);
+    void createFarmerProfile(String email, String firstName, String lastName, String dpi, Long phone, String address, String history);
 }

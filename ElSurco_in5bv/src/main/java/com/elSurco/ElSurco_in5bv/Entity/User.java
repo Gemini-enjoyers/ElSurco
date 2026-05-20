@@ -12,8 +12,8 @@ public class User {
     @Column(name = "idUser")
     private Integer idUser;
 
-    @Column(name = "userFirtName", nullable = false)
-    private String userFirtName;
+    @Column(name = "userFirstName", nullable = false)
+    private String userFirstName;
 
     @Column(name = "userLastName", nullable = false)
     private String userLastName;
@@ -39,22 +39,75 @@ public class User {
 
     public User() {}
 
-    public Integer getIdUser() { return idUser; }
-    public void setIdUser(Integer idUser) { this.idUser = idUser; }
-    public String getUserFirtName() { return userFirtName; }
-    public void setUserFirtName(String userFirtName) { this.userFirtName = userFirtName; }
-    public String getUserLastName() { return userLastName; }
-    public void setUserLastName(String userLastName) { this.userLastName = userLastName; }
-    public String getHandle() { return handle; }
-    public void setHandle(String handle) { this.handle = handle; }
-    public String getUserEmail() { return userEmail; }
-    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
-    public String getUserPassword() { return userPassword; }
-    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
-    public String getUserAddress() { return userAddress; }
-    public void setUserAddress(String userAddress) { this.userAddress = userAddress; }
-    public Long getUserPhone() { return userPhone; }
-    public void setUserPhone(Long userPhone) { this.userPhone = userPhone; }
-    public Status getUserStatus() { return userStatus; }
-    public void setUserStatus(Status userStatus) { this.userStatus = userStatus; }
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
+    }
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
+
+    public String getHandle() {
+        return handle;
+    }
+
+    public void setHandle(String handle) {
+        this.handle = handle;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public Long getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(Long userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public Status getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Status userStatus) {
+        this.userStatus = userStatus;
+    }
 }

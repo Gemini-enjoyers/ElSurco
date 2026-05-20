@@ -1,4 +1,4 @@
-package com.elSurco.ElSurco_in5bv.Controller;
+package com.elSurco.ElSurco_in5bv.ControllersView;
 
 import com.elSurco.ElSurco_in5bv.Entity.Product;
 import com.elSurco.ElSurco_in5bv.Repository.ProductRepository;
@@ -45,5 +45,10 @@ public class ShopViewController {
 
         // Retorna el nombre exacto de tu plantilla Thymeleaf (shop.html)
         return "shop";
+    }
+
+    @GetMapping("/cart")
+    public String cartView(){
+        return "shoppingCart";
     }
 }

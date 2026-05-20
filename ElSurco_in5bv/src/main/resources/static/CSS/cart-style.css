@@ -1,0 +1,375 @@
+/* ===================================================
+   VARIABLES DE DISEÑO UNIFICADAS (El Surco)
+   =================================================== */
+:root {
+    --color-fondo: #F9FBF7;         /* Crema orgánico de fondo */
+    --color-verde-claro: #A7C957;   /* Verde limón */
+    --color-verde-medio: #6A994E;   /* Verde hoja para botones principales */
+    --color-verde-oscuro: #1E362D;  /* Verde bosque profundo del encabezado */
+    --color-blanco: #FFFFFF;
+    --color-texto-principal: #1A2E26;
+    --color-texto-mutado: #6B7280;
+    --border-suave: #E6EDE0;
+}
+
+/* ===================================================
+   RESET Y CONFIGURACIÓN BASE
+   =================================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ===================================================
+   HEADER DE LA TIENDA (SHOP HEADER)
+   =================================================== */
+.shop-header {
+    background-color: var(--color-verde-oscuro);
+    padding: 0.8rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    min-height: 65px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-logo {
+    font-size: 1.8rem;
+    color: var(--color-blanco);
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.btn-back-shop {
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-back-shop:hover {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    border-color: var(--color-verde-claro);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.account-top-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.account-top-link {
+    color: #E6EDE0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+.account-top-link:hover {
+    color: var(--color-verde-claro);
+}
+
+/* ===================================================
+   ESTRUCTURA DE LA CANASTA DE COMPRAS
+   =================================================== */
+.cart-main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-verde-oscuro);
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+.cart-main-title span {
+    color: var(--color-verde-medio); /* Destaca el nombre del usuario */
+}
+
+/* ❌ Estilo de Canasta Vacía */
+.empty-cart-card {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--border-suave);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(30, 54, 45, 0.02);
+}
+
+.empty-cart-icon {
+    font-size: 3.5rem;
+    opacity: 0.7;
+}
+
+.btn-primary-agro {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.25s ease;
+}
+
+.btn-primary-agro:hover {
+    background-color: var(--color-verde-oscuro);
+    color: var(--color-blanco);
+}
+
+/* ===================================================
+   FILAS DE PRODUCTOS (CART ITEM ROW)
+   =================================================== */
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cart-item-row {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--border-suave);
+    border-radius: 14px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 54, 45, 0.04);
+}
+
+/* Contenedor de Imagen */
+.item-image-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-fondo);
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.item-image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Detalles del ítem */
+.item-details {
+    flex-grow: 1;
+}
+
+.item-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-verde-oscuro);
+    margin: 0 0 0.2rem 0;
+}
+
+.item-description {
+    font-size: 0.85rem;
+    color: var(--color-texto-mutado);
+    margin: 0;
+}
+
+/* Inputs de Cantidad */
+.quantity-input {
+    width: 65px;
+    text-align: center;
+    font-weight: 600;
+    border-color: var(--border-suave);
+    border-radius: 8px;
+    padding: 0.35rem;
+}
+
+.quantity-input:focus {
+    border-color: var(--color-verde-medio);
+    box-shadow: 0 0 0 0.25rem rgba(106, 153, 78, 0.15);
+}
+
+.btn-sync-qty {
+    background-color: var(--color-fondo);
+    color: var(--color-verde-medio);
+    border: 1px solid var(--border-suave);
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-sync-qty:hover {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    border-color: var(--color-verde-medio);
+}
+
+/* Precios */
+.item-pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 100px;
+}
+
+.item-price-unit {
+    font-size: 0.8rem;
+    color: var(--color-texto-mutado);
+}
+
+.item-price-subtotal {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-verde-oscuro);
+}
+
+/* Botón Eliminar Ítem */
+.btn-remove-item {
+    background: transparent;
+    color: #EF4444; /* Rojo de alerta estándar */
+    border: none;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.btn-remove-item:hover {
+    background-color: #FEE2E2;
+}
+
+/* ===================================================
+   TARJETA DE RESUMEN (SUMMARY CARD)
+   =================================================== */
+.summary-card {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--border-suave);
+    border-radius: 16px;
+    padding: 2rem;
+    position: sticky;
+    top: 100px; /* Se queda fija al hacer scroll descendente */
+    box-shadow: 0 4px 20px rgba(30, 54, 45, 0.02);
+}
+
+.summary-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-verde-oscuro);
+    margin: 0 0 1rem 0;
+}
+
+.summary-divider {
+    border-top: 1px solid var(--border-suave);
+    opacity: 1;
+    margin: 1rem 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-texto-principal);
+}
+
+.shipping-tag {
+    color: var(--color-verde-medio);
+    font-weight: 700;
+}
+
+.total-row {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    color: var(--color-verde-oscuro);
+    font-weight: 800;
+}
+
+.btn-checkout-agro {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 0.9rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(106, 153, 78, 0.2);
+    transition: all 0.25s ease;
+}
+
+.btn-checkout-agro:hover {
+    background-color: var(--color-verde-oscuro);
+    color: var(--color-blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 54, 45, 0.15);
+}
+
+/* ===================================================
+   RESPONSIVIDAD MÓVIL
+   =================================================== */
+@media (max-width: 768px) {
+    .cart-item-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .item-pricing {
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        border-top: 1px solid var(--color-fondo);
+        padding-top: 0.5rem;
+    }
+
+    .item-remove-action {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .cart-item-row {
+        position: relative;
+    }
+}

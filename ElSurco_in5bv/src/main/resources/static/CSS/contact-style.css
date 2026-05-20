@@ -1,0 +1,162 @@
+/* ===================================================
+   VARIABLES DE IDENTIDAD VISUAL (El Surco)
+   =================================================== */
+:root {
+    --color-fondo: #F9FBF7;         /* Crema orgánico */
+    --color-verde-claro: #A7C957;   /* Verde pistacho sutil */
+    --color-verde-medio: #6A994E;   /* Verde hoja para acciones */
+    --color-verde-oscuro: #1E362D;  /* Verde bosque profundo */
+    --color-blanco: #FFFFFF;
+}
+
+/* ===================================================
+   ESTILOS GENERALES DE LA PÁGINA
+   =================================================== */
+body {
+    background-color: var(--color-fondo) !important;
+    color: var(--color-verde-oscuro);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+/* ===================================================
+   HEADER & NAVBAR (Copiado fielmente de tu Home)
+   =================================================== */
+.custom-header {
+    background-color: var(--color-verde-oscuro);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-header .logo {
+    color: var(--color-fondo);
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.custom-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.custom-nav a {
+    color: var(--color-fondo);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover y estado seleccionado iluminados en verde claro */
+.custom-nav a:not(.btn-nav-tienda):hover,
+.custom-nav a.active {
+    color: var(--color-verde-claro);
+}
+
+/* El botón ovalado de acción ("Ir a la Tienda") */
+.custom-nav .btn-nav-tienda {
+    background-color: var(--color-verde-claro);
+    color: var(--color-verde-oscuro);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.custom-nav .btn-nav-tienda:hover {
+    background-color: var(--color-blanco);
+    transform: scale(1.05);
+}
+
+/* ===================================================
+   HERO SECTION (PRESENTACIÓN)
+   =================================================== */
+.farmer-hero {
+    background: linear-gradient(rgba(30, 54, 45, 0.85), rgba(30, 54, 45, 0.85)),
+                url('/img/background register.png') no-repeat center center/cover;
+    color: var(--color-blanco);
+    padding: 90px 0;
+    text-align: center;
+    border-bottom: 5px solid var(--color-verde-claro);
+}
+
+.farmer-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.farmer-hero p {
+    color: #E6EDE0;
+    font-size: 1.15rem;
+    max-width: 750px;
+    margin: 1.5rem auto 0 auto;
+    line-height: 1.6;
+}
+
+/* ===================================================
+   TARJETA DEL FORMULARIO DE REGISTRO
+   =================================================== */
+.form-container-card {
+    background-color: var(--color-blanco);
+    border: 1px solid #E6EDE0;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(30, 54, 45, 0.04);
+    padding: 2.5rem;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.form-title {
+    color: var(--color-verde-oscuro);
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-label {
+    color: var(--color-verde-oscuro);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-verde-medio) !important;
+    box-shadow: 0 0 0 0.25rem rgba(106, 153, 78, 0.15) !important;
+}
+
+/* ===================================================
+   BOTÓN TRANSACCIONAL (Enviar Formulario)
+   =================================================== */
+.btn-submit-farmer {
+    background-color: var(--color-verde-medio);
+    color: var(--color-blanco);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-submit-farmer:hover {
+    background-color: var(--color-verde-oscuro);
+    color: var(--color-blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 54, 45, 0.15);
+}
+
+.btn-submit-farmer:active {
+    transform: translateY(0);
+}
